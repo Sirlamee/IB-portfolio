@@ -1,0 +1,837 @@
+@font-face {
+    font-family: 'Bohemian Soul';
+    src: url('fonts/BohemianSoul.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Relationship de Melodrame';
+    src: url('fonts/RelationshipMélodrame.ttf') format('truetype');
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+:root {
+    --primary-bg: #1a1a1a;
+    --navbar-bg: rgba(255, 255, 255, 0.1);
+    --text-color: #ffffff;
+    --text-color-secondary: rgba(255, 255, 255, 0.4);
+    --nav-link-bg: rgba(255, 255, 255, 0.2);
+    --nav-link-hover: rgba(255, 255, 255, 0.3);
+    --column-default-bg: #000000;
+    --nav-links-bg: #000000;
+}
+
+[data-theme="light"] {
+    --primary-bg: #ffffff;
+    --navbar-bg: rgba(0, 0, 0, 0.1);
+    --text-color: #333333;
+    --text-color-secondary: rgba(0, 0, 0, 0.4);
+    --nav-link-bg: rgba(0, 0, 0, 0.1);
+    --nav-link-hover: rgba(0, 0, 0, 0.2);
+    --column-default-bg: #ffffff;
+    --nav-links-bg: #FCFCFC;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    overflow-x: hidden;
+}
+
+.main-container {
+    position: relative;
+    background-color: var(--primary-bg);
+    /* height: 100vh; */
+    width: 100%;
+    padding-inline: 3rem;
+    /* scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    height: 100vh; */
+
+}
+
+/* Navbar Styles */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 3rem;
+    z-index: 1000;
+    /* background-color: var(--primary-bg); */
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(35px);
+
+}
+
+.nav-brand span {
+    color: var(--text-color);
+    font-family: 'Relationship de Melodrame', sans-serif;
+    font-size: clamp(0.8rem, 1vw, 15px);
+}
+
+.hamburger-menu {
+    display: none;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    background-color: #FCFCFC;
+    border-radius: 25px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.nav-link {
+    color: #000000;
+    /* text-decoration: none; */
+    padding: 10px 2rem;
+    font-size: clamp(1rem, 1vw, 20px);
+    font-family: 'Relationship de Melodrame', sans-serif;
+    /* background: var(--nav-link-bg); */
+    /* border-radius: 25px; */
+    transition: all 0.3s ease;
+    /* backdrop-filter: blur(5px); */
+}
+
+.nav-link-active {
+    text-decoration: underline;
+}
+
+/* .nav-link:hover {
+    background: var(--nav-link-hover);
+    transform: translateY(-2px);
+} */
+
+/* Theme Switch Styles */
+.theme-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+}
+
+.theme-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.theme-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--nav-link-bg);
+    transition: 0.4s;
+    border-radius: 30px;
+    backdrop-filter: blur(5px);
+}
+
+.theme-slider:before {
+    position: absolute;
+    content: "🌙";
+    height: 26px;
+    width: 26px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+}
+
+input:checked+.theme-slider {
+    background: var(--nav-link-hover);
+}
+
+input:checked+.theme-slider:before {
+    transform: translateX(30px);
+    content: "🌚";
+}
+
+.theme-slider:hover {
+    background: var(--nav-link-hover);
+}
+
+
+/* section.section {
+    scroll-snap-align: start;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-inline: 2rem;
+    border: 1px solid red;
+} */
+
+
+/********
+
+first section 
+
+********/
+
+.name-container {
+    padding-top: 100px;
+    padding-bottom: 20px;
+}
+
+.name-container h1 {
+    font-size: clamp(3rem, 11.5vw, 200px);
+    font-weight: 400;
+    font-family: 'Bohemian Soul', sans-serif;
+    color: var(--text-color);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    white-space: nowrap;
+    text-align: center;
+}
+
+.about {
+    margin-bottom: 30px;
+}
+
+.about p {
+    font-size: clamp(1.5rem, 2vw, 20px);
+    line-height: 28px;
+    font-family: 'Relationship de Melodrame', sans-serif;
+    color: var(--text-color);
+    text-align: center;
+
+}
+
+.first-section .image-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.first-section .image-container div {
+    width: 50%;
+}
+
+.first-section .image-container img {
+    width: 99%;
+    height: 99%;
+    object-fit: cover;
+}
+
+.first-section .other-images {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    row-gap: 0.5rem;
+}
+
+.first-section .other-images img {
+    margin-left: auto;
+}
+
+/********
+
+second section 
+
+********/
+
+.second-section {
+    height: 100vh;
+    margin-bottom: 150px;
+}
+
+.video-section {
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    background-color: white;
+    z-index: 1002;
+}
+
+.video-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.video-container.visible {
+    opacity: 1;
+}
+
+.video-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.video-container button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    z-index: 2;
+    backdrop-filter: blur(5px);
+    transition: background 0.3s ease;
+}
+
+.video-container button:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.white-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    z-index: 1;
+    transition: opacity 0.5s ease;
+}
+
+.white-overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/********
+
+third section 
+
+********/
+
+.third-section {
+    margin-bottom: 150px;
+}
+
+.third-section .heading-container {
+    margin-bottom: 20px;
+}
+
+.third-section .heading-container h2 {
+    font-size: clamp(2rem, 4vw, 40px);
+    font-weight: 400;
+    line-height: 100%;
+    font-family: 'Bohemian Soul', sans-serif;
+    color: var(--text-color);
+    text-align: center;
+}
+
+.third-section .paragraph-container {
+    margin-bottom: 50px;
+}
+
+.third-section .paragraph-container p {
+    font-size: clamp(1.5rem, 2vw, 24px);
+    line-height: 28px;
+    font-family: 'Relationship de Melodrame', sans-serif;
+    color: var(--text-color);
+    text-align: center;
+}
+
+.third-section .skills-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+}
+
+.third-section .second-row {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
+}
+
+.third-section .skill-item {
+    position: relative;
+    height: 400px;
+    width: 100%;
+    border-radius: 25px;
+}
+
+.third-section .skill-item h5 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    /* text-align: center; */
+    color: #ffffff;
+    font-size: clamp(1rem, 2vw, 20px);
+    font-family: 'Bohemian Soul', sans-serif;
+    font-weight: 400;
+    line-height: 100%;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    padding: 2rem;
+}
+
+.third-section .skill-item-1 {
+    background: url(images/Rectangle56.png) no-repeat center center;
+    background-size: cover;
+}
+
+.third-section .skill-item-2 {
+    background: url(images/Rectangle62.png) no-repeat center center;
+    background-size: cover;
+}
+
+.third-section .skill-item-3 {
+    background: url(images/Rectangle63.png) no-repeat center center;
+    background-size: cover;
+}
+
+.third-section .skill-item-4 {
+    background: url(images/Rectangle64.png) no-repeat center center;
+    background-size: cover;
+}
+
+.third-section .skill-item-5 {
+    background: url(images/Rectangle65.png) no-repeat center center;
+    background-size: cover;
+}
+
+/********
+
+fourth section 
+
+********/
+
+.fourth-section {
+    margin-bottom: 150px;
+    /* height: 100vh; */
+}
+
+.fourth-section div.link-image-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.fourth-section div.image-column {
+    /* background: #FCFCFC; */
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.fourth-section div.links-column {
+    /* background: #FCFCFC; */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    /* position: relative; */
+}
+
+.fourth-section div.links-column h2 {
+    font-size: clamp(2.5rem, 3.5vw, 40px);
+    line-height: 200%;
+    font-family: 'Relationship de Melodrame', sans-serif;
+    font-weight: 400;
+    color: var(--text-color);
+    /* text-align: center; */
+}
+
+.fourth-section .link-item {
+    color: var(--text-color-secondary);
+    /* font-size: clamp(1rem, 2vw, 20px); */
+    font-family: 'Relationship de Melodrame', sans-serif;
+    font-weight: 400;
+    line-height: 100%;
+}
+
+.fourth-section .link-item:nth-child(1):hover {
+    color: #E70005;
+}
+
+.fourth-section .link-item:nth-child(1)::after {
+    content: url(images/arsenal-logo-small.png);
+}
+
+.fourth-section .link-item:nth-child(2):hover {
+    background: linear-gradient(to right, #E02828, #2C3991);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+}
+
+.fourth-section .link-item:nth-child(2)::after {
+    content: url(images/ball.png);
+}
+
+.fourth-section .link-item:nth-child(3):hover {
+    color: #0D66BA;
+}
+
+.fourth-section .link-item:nth-child(3)::after {
+    content: url(images/gamepad.png);
+}
+
+.fourth-section .link-item:nth-child(4):hover {
+    color: #7E1D0C;
+}
+
+.fourth-section .link-item:nth-child(4)::after {
+    content: url(images/dumbell.png);
+}
+
+.fourth-section .link-item:nth-child(5):hover {
+    color: #1AC239;
+}
+
+.fourth-section .link-item:nth-child(5)::after {
+    content: url(images/tv-logo.png);
+}
+
+
+.fourth-section .placeholder-image.hidden {
+    opacity: 0;
+}
+
+.fourth-section .image-display {
+    /* display: none; */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 25px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    position: absolute;
+}
+
+.fourth-section .image-display.active {
+    opacity: 1 !important;
+    /* display: block; */
+}
+
+.fourth-section .placeholder-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 25px;
+    transition: opacity 0.5s ease;
+    opacity: 1;
+}
+
+/********
+
+fifth section 
+
+********/
+
+.fifth-section {
+    height: 100vh;
+    margin-bottom: 150px;
+}
+
+.fifth-section .text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+}
+
+.fifth-section .heading-container {
+    width: 80%;
+}
+
+.fifth-section .text-container h2 {
+    font-size: clamp(2rem, 3vw, 40px);
+    font-weight: 400;
+    font-family: 'Bohemian Soul', sans-serif;
+    color: var(--text-color);
+    text-align: center;
+}
+
+.fifth-section .list-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.fifth-section .list-container ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    list-style: none;
+}
+
+.fifth-section .list-container ul li {
+    font-size: clamp(2rem, 3vw, 30px);
+    font-weight: 800;
+    font-family: 'Relationship de Melodrame', sans-serif;
+    /* color: var(--text-color-secondary); */
+    /* color: var(--text-color); */
+    text-align: center;
+    /* filter: blur(1px); */
+}
+
+.letter {
+    color: var(--text-color-secondary);
+    transition: color 0.3s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+.letter:hover {
+    color: var(--text-color);
+}
+
+.letter.painted {
+    color: var(--text-color);
+}
+
+/********
+
+sixth section 
+
+********/
+
+.sixth-section {
+    margin-bottom: 150px;
+}
+
+.sixth-section .image-text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+}
+
+.sixth-section .image-container {
+    /* width: 50%; */
+    height: 400px;
+}
+
+.sixth-section .image-container img {
+    width: 100%;
+    height: 100%;
+    max-height: 400px;
+    object-fit: cover;
+}
+
+.sixth-section .text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.sixth-section .text-container p {
+    font-size: clamp(2rem, 2.5vw, 36px);
+    font-family: 'Relationship de Melodrame', sans-serif;
+    color: var(--text-color);
+    text-align: center;
+}
+
+.sixth-section .text-container h2 {
+    font-size: clamp(3rem, 5vw, 60px);
+    font-weight: 400;
+    font-family: 'Bohemian Soul', sans-serif;
+    color: var(--text-color);
+    text-align: center;
+}
+
+
+
+
+section.section:last-child {
+    margin-bottom: 0;
+    padding-bottom: 50px;
+}
+
+@media (max-width: 950px) {
+    /* body {
+        overflow-y: scroll;
+    } */
+
+    section.section {
+        height: auto;
+        margin-bottom: 100px;
+    }
+
+    .about span {
+        display: none;
+    }
+
+    .first-section .image-container {
+        flex-direction: column;
+    }
+
+    .first-section .image-container div {
+        width: 100%;
+        height: 100%;
+    }
+
+    .first-section .other-images {
+        display: none;
+    }
+
+    .main-container {
+        height: auto;
+        min-height: 100vh;
+    }
+
+
+    .hamburger-menu {
+        display: block;
+        cursor: pointer;
+        z-index: 1001;
+    }
+
+    .hamburger-icon {
+        width: 30px;
+        height: 20px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .hamburger-icon span {
+        display: block;
+        height: 2px;
+        width: 100%;
+        background-color: var(--text-color);
+        transition: all 0.3s ease;
+    }
+
+    .hamburger-icon.active span:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+    }
+
+    .hamburger-icon.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger-icon.active span:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+    }
+
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        height: 100vh;
+        background-color: var(--primary-bg);
+        padding: 80px 20px;
+        transition: right 0.3s ease;
+        align-items: center;
+        gap: 30px;
+        border-left: 1px solid var(--text-color-secondary);
+    }
+
+    .desktop-hide {
+        display: block !important;
+    }
+
+    .mobile-hide {
+        display: none !important;
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+
+    .name-container h1 {
+        font-size: clamp(3rem, 11vw, 200px);
+        white-space: nowrap;
+    }
+
+    .third-section .skills-container {
+        grid-template-columns: 1fr;
+    }
+
+    .third-section .second-row {
+        grid-template-columns: 1fr;
+    }
+
+    .fourth-section div.link-image-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .fourth-section div.image-column {
+        height: 300px;
+        order: 2;
+    }
+
+    .fourth-section div.links-column {
+        align-items: center;
+        order: 1;
+    }
+
+    .fourth-section div.links-column h2 {
+        font-size: clamp(2rem, 3vw, 30px);
+        line-height: 60px;
+        font-family: 'Relationship de Melodrame', sans-serif;
+        font-weight: 400;
+        /* color: var(--text-color); */
+        /* text-align: center; */
+    }
+
+    .fifth-section .heading-container {
+        width: 100%;
+    }
+
+
+}
+
+@media (max-width: 500px) {
+    .name-container h1 {
+        font-size: clamp(2rem, 10.5vw, 100px);
+    }
+
+    .main-container {
+        padding-inline: 2rem;
+    }
+
+    /* Navbar Styles */
+    .navbar {
+        padding: 20px 2rem;
+    }
+
+
+}

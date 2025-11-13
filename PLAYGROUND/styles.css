@@ -1,0 +1,902 @@
+@font-face {
+    font-family: 'Bohemian Soul';
+    src: url('fonts/BohemianSoul.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Relationship de Melodrame';
+    src: url('fonts/RelationshipMélodrame.ttf') format('truetype');
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+}
+
+:root {
+    --primary-bg: #1a1a1a;
+    --navbar-bg: rgba(255, 255, 255, 0.1);
+    --text-color: #ffffff;
+    --nav-link-bg: rgba(255, 255, 255, 0.2);
+    --nav-link-hover: rgba(255, 255, 255, 0.3);
+    --column-default-bg: #000000;
+    --nav-links-bg: #000000;
+
+}
+
+[data-theme="light"] {
+    --primary-bg: #ffffff;
+    --navbar-bg: rgba(0, 0, 0, 0.1);
+    --text-color: #333333;
+    --nav-link-bg: rgba(0, 0, 0, 0.1);
+    --nav-link-hover: rgba(0, 0, 0, 0.2);
+    --column-default-bg: #ffffff;
+    --nav-links-bg: #FCFCFC;
+
+}
+
+
+/* body {
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+} */
+
+.main-container {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+}
+
+
+.navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    /* background: var(--navbar-bg); */
+    /* backdrop-filter: blur(10px); */
+    z-index: 1000;
+    /* border-bottom: 1px solid rgba(255, 255, 255, 0.1); */
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.nav-brand span {
+    color: #FCFCFC;
+    font-family: 'Relationship de Melodrame', sans-serif;
+    font-size: clamp(0.8rem, 1vw, 15px);
+}
+
+.hamburger-menu {
+    display: none;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    background-color: var(--nav-links-bg);
+    border-radius: 25px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.nav-link {
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 10px 2rem;
+    font-size: clamp(1rem, 1vw, 20px);
+    font-family: 'Relationship de Melodrame', sans-serif;
+    /* background: var(--nav-link-bg); */
+    /* border-radius: 25px; */
+    transition: all 0.3s ease;
+    /* backdrop-filter: blur(5px); */
+}
+
+.nav-link-active {
+    text-decoration: underline;
+}
+
+/*******
+ Theme Switch Styles 
+ *******/
+.theme-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+}
+
+.theme-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.theme-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--nav-link-bg);
+    transition: 0.4s;
+    border-radius: 30px;
+    backdrop-filter: blur(5px);
+}
+
+.theme-slider:before {
+    position: absolute;
+    content: "🌙";
+    height: 26px;
+    width: 26px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+}
+
+input:checked+.theme-slider {
+    background: var(--nav-link-hover);
+}
+
+input:checked+.theme-slider:before {
+    transform: translateX(30px);
+    content: "🌚";
+}
+
+.theme-slider:hover {
+    background: var(--nav-link-hover);
+}
+
+/*******
+SECTION STYLES
+*******/
+
+div.section-container {
+    background-color: var(--primary-bg);
+    z-index: -1;
+}
+
+section.section {
+    width: 100%;
+    position: relative;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    color: var(--text-color);
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+
+section.section1 {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+}
+
+
+.background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.section1 div.content-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #FCFCFC;
+    width: 60%;
+    justify-content: center;
+    align-items: center;
+    /* text-align: center; */
+    /* max-width: 50%; */
+}
+
+
+span.arrow {
+    position: relative;
+    font-weight: 600;
+    font-size: 95px;
+    padding-left: 15px;
+}
+
+span.arrow::before {
+    content: "";
+    position: absolute;
+    border: 5px solid #FCFCFC;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    bottom: 50%;
+    left: 0;
+    transform: translate(-30%, 100%);
+    z-index: -1;
+}
+
+span.arrow::after {
+    content: "";
+    position: absolute;
+    background-color: #FD6A37;
+    opacity: 0.5;
+    /* border: 5px solid #FCFCFC; */
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    bottom: 50%;
+    right: 50%;
+    transform: translate(80%, 70%);
+    z-index: -1;
+}
+
+span.ideas {
+    color: #FD6A37;
+    /* position: relative; */
+}
+
+span.ideas::after {
+    content: "";
+    background-image: url(images/playRide.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    min-width: 120px;
+    min-height: 70px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+
+span.diagonal-arrow {
+    border-bottom: 5px solid #FCFCFC;
+    display: inline-block;
+    width: fit-content;
+    font-size: clamp(1.5rem, 4vw, 70px);
+
+}
+
+span.x-symbol {
+    position: relative;
+    -webkit-text-stroke: 1px #FCFCFC;
+    color: #333;
+    font-size: 1.5rem;
+    margin-inline: 50px;
+    vertical-align: middle;
+
+}
+
+span.x-symbol::before {
+    content: "";
+    background-color: #FCBF26;
+    opacity: 0.5;
+    position: absolute;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    bottom: 50%;
+    right: 50%;
+    transform: translate(-50%, 50%);
+    /* z-index: -1;     */
+}
+
+
+span.x-symbol::after {
+    content: "";
+    background-color: #3EB271;
+    opacity: 0.5;
+    position: absolute;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    bottom: 50%;
+    left: 50%;
+    transform: translate(50%, 50%);
+    /* z-index: -1;     */
+}
+
+.box-of-colourSpans {
+    display: inline-flex;
+    align-items: center;
+    /* vertical-align: text-bottom; */
+    /* width: 100%;
+    height: 100%; */
+}
+
+.box-of-colourSpans .colour-span-1 {
+    background-color: #C378D3;
+    opacity: 0.5;
+    width: 20px;
+    height: 35px;
+    border-radius: 30px 0 0 30px;
+}
+
+.box-of-colourSpans .colour-span-2 {
+    background-color: #3AB16F;
+    opacity: 0.5;
+    width: 20px;
+    height: 35px;
+    border-radius: 30px 0 0 30px;
+}
+
+.box-of-colourSpans .colour-span-3 {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-right: 20px solid #FE713C;
+    opacity: 0.5;
+}
+
+.box-of-colourSpans .colour-span-4 {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-right: 20px solid #477BF1;
+    opacity: 0.5;
+}
+
+.section1 .left-content .content-item-header {
+    font-size: clamp(2rem, 5vw, 70px);
+    font-family: 'Bohemian Soul';
+    font-weight: 400;
+    text-align: center;
+}
+
+.section1 .play-and-text-content {
+    position: relative;
+    bottom: 0%;
+    right: 20%;
+}
+
+
+.section1 .right-content {
+    font-family: 'Relationship de Melodrame', sans-serif;
+    width: 40%;
+    /* justify-self: center; */
+    font-size: clamp(12px, 1.4vw, 20px);
+    position: absolute;
+    bottom: 0%;
+    right: 12%;
+    padding-left: 0.8rem;
+    text-align: justify;
+}
+
+.section1 .bottom-content {
+    position: absolute;
+    bottom: 3%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Relationship de Melodrame', sans-serif;
+    font-size: clamp(1rem, 2vw, 18px);
+    text-align: center;
+    width: 100%;
+    color: #FCFCFC;
+}
+
+
+/* .left-content, .right-content {
+    display: inline-block;
+} */
+
+
+/* .left-content,
+.right-content {
+    flex: 1;
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+} */
+
+
+/********
+SECTION 2 STYLES
+********/
+
+
+
+.other-section {
+    /* height: 100vh; */
+    width: 100%;
+    height: auto;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    padding: 45px;
+}
+
+.grid-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.content-image {
+    position: relative;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
+.content-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.5s ease;
+}
+
+.content-image::before {
+    content: url(images/play-icon.png);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* transform: translate(50%, 50%); */
+}
+
+.content-image video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.content-image:hover img {
+    opacity: 0;
+}
+
+.content-image:hover video {
+    opacity: 1;
+}
+
+.other-section .content-text {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+.other-section .content-text .left-content {
+    font-family: 'Relationship de Melodrame', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.other-section .content-text .right-content .content-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+
+.three-column-container {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.three-column-container .column {
+    padding: 1rem;
+    /* flex: 1; */
+}
+
+.column .column-content h2 {
+    font-family: 'Bohemian Soul', sans-serif;
+    font-size: clamp(16px, 1.2rem, 30px);
+    font-weight: 400;
+    color: var(--text-color);
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.column .column-content p {
+    font-family: 'Relationship de Melodrame', sans-serif;
+    font-size: clamp(14px, 1rem, 20px);
+    color: var(--text-color);
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    color: var(--text-color);
+    border: var(--text-color) 1px solid;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+    z-index: 1000;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    transform: translateY(-5px);
+}
+
+.back-to-top span {
+    font-size: 12px;
+    line-height: 1;
+}
+
+
+
+
+/* Responsive Design */
+
+@media (min-width: 992px) {}
+
+
+@media (max-width: 950px) {
+    span.arrow {
+        display: none;
+    }
+
+    #sandbox {
+        position: relative;
+        padding-left: 50px;
+    }
+
+    #sandbox::before {
+        content: "";
+        position: absolute;
+        background-color: #FD6A37;
+        opacity: 0.5;
+        /* border: 5px solid #FCFCFC; */
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        bottom: 50%;
+        left: 0%;
+        transform: translate(0%, 50%);
+        z-index: -1;
+    }
+
+    span.ideas::after {
+        content: "";
+        background-image: url(images/playRide_mobile.svg);
+        background-size: contain;
+        background-repeat: no-repeat;
+        min-width: 70px;
+        min-height: 40px;
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    .navbar {
+        position: fixed;
+        background: rgba(158, 158, 158, 0.1);
+        backdrop-filter: blur(35px);
+        -webkit-backdrop-filter: blur(35px);
+        padding: 20px 1.5rem;
+
+    }
+
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 50%;
+        height: 100vh;
+        background-color: var(--primary-bg);
+        padding: 80px 20px;
+        transition: right 0.3s ease;
+        align-items: center;
+        gap: 30px;
+        border-left: 1px solid var(--text-color-secondary);
+        border-radius: 0%;
+    }
+
+    .hamburger-menu {
+        display: block;
+        cursor: pointer;
+        z-index: 1001;
+        order: 3;
+
+    }
+
+    .hamburger-icon {
+        width: 30px;
+        height: 20px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .hamburger-icon span {
+        display: block;
+        height: 2px;
+        width: 100%;
+        background-color: var(--text-color);
+        transition: all 0.3s ease;
+    }
+
+    .hamburger-icon.active span:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+    }
+
+    .hamburger-icon.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger-icon.active span:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+    }
+
+    .nav-toggle {
+        order: 2;
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+
+    .other-section .content-text .left-content {
+        width: 100%;
+    }
+
+    .story::before {
+        content: "";
+        display: inline-block;
+        width: 3rem;
+        height: 3rem;
+        margin: 0 12px;
+        background-image: url("images/Group1352.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        vertical-align: sub;
+    }
+
+    .star-image::before {
+        content: "";
+        display: inline-block;
+        width: 2rem;
+        height: 2rem;
+        margin: 0 12px;
+        background-image: url("images/Vectorr.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        vertical-align: middle;
+    }
+
+    .section1 .right-content {
+        font-family: 'Relationship de Melodrame', sans-serif;
+        width: 80%;
+        justify-self: center;
+        font-size: clamp(12px, 1.4vw, 20px);
+        position: relative;
+        bottom: 0%;
+        right: 0%;
+        padding-left: 0px;
+        padding-top: 20px;
+        text-align: center;
+    }
+
+    .section1 .right-content p {
+        font-size: clamp(14px, 2vw, 20px);
+    }
+
+    span.x-symbol::before {
+        width: 25px;
+        height: 25px;
+    }
+
+
+    span.x-symbol::after {
+        width: 25px;
+        height: 25px;
+    }
+
+    span.x-symbol {
+        margin-inline: 30px;
+    }
+
+    .section1 .play-and-text-content {
+    position: relative;
+    bottom: 0%;
+    left: 0%;
+}
+
+
+
+
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 2rem;
+        padding: 45px;
+    }
+
+    .grid-item {
+        margin-bottom: 50px;
+    }
+
+    .other-section .content-text .left-content {
+        width: 60%;
+    }
+
+    .section1 .left-content .content-item-header {
+        font-size: clamp(2rem, 2.5rem, 70px);
+        font-family: 'Bohemian Soul';
+        font-weight: 400;
+        text-align: center;
+    }
+
+    .section1 div.content-container {
+        width: 80%;
+    }
+
+    .box-of-colourSpans .colour-span-1 {
+        background-color: #C378D3;
+        opacity: 0.5;
+        width: 10px;
+        height: 25px;
+        border-radius: 30px 0 0 30px;
+    }
+
+    .box-of-colourSpans .colour-span-2 {
+        background-color: #3AB16F;
+        opacity: 0.5;
+        width: 10px;
+        height: 25px;
+        border-radius: 30px 0 0 30px;
+    }
+
+    .box-of-colourSpans .colour-span-3 {
+        display: inline-block;
+        width: 0;
+        height: 0;
+        border-top: 15px solid transparent;
+        border-bottom: 15px solid transparent;
+        border-right: 15px solid #FE713C;
+        opacity: 0.5;
+    }
+
+    .box-of-colourSpans .colour-span-4 {
+        display: inline-block;
+        width: 0;
+        height: 0;
+        border-top: 15px solid transparent;
+        border-bottom: 15px solid transparent;
+        border-right: 15px solid #477BF1;
+        opacity: 0.5;
+    }
+
+
+
+
+
+
+}
+
+
+
+@media (max-width: 776px) {
+    span.arrow {
+        font-size: 70px;
+    }
+
+
+
+}
+
+
+
+
+@media (max-width: 627px) {
+    section.other-section {
+        height: auto;
+        margin-bottom: 100px;
+    }
+
+    .three-column-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+
+    .section .content-image img {
+        height: 30vh;
+        margin-bottom: 1rem;
+    }
+
+    .other-section .content-text .left-content {
+        width: 100%;
+    }
+
+}
+
+@media (max-width: 618px) {
+    span.arrow {
+        display: none;
+    }
+
+
+    .section1 .left-content .content-item-header {
+        text-align: center;
+    }
+
+    .back-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+    }
+
+}
+
+@media (max-width: 424px) {
+        .section1 .left-content .content-item-header {
+        font-size: clamp(1rem, 2rem, 50px);
+        font-family: 'Bohemian Soul';
+        font-weight: 400;
+        text-align: center;
+    }
+
+}

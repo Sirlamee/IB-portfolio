@@ -1,0 +1,856 @@
+@font-face {
+    font-family: 'Bohemian Soul';
+    src: url('fonts/BohemianSoul.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Relationship de Melodrame';
+    src: url('fonts/RelationshipMélodrame.ttf') format('truetype');
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-bg: #1a1a1a;
+    --navbar-bg: rgba(255, 255, 255, 0.1);
+    --text-color: #ffffff;
+    --nav-link-bg: rgba(255, 255, 255, 0.2);
+    --nav-link-hover: rgba(255, 255, 255, 0.3);
+    --column-default-bg: #000000;
+    --nav-links-bg: #000000;
+}
+
+[data-theme="light"] {
+    --primary-bg: #f0f0f0;
+    --navbar-bg: rgba(0, 0, 0, 0.1);
+    --text-color: #333333;
+    --nav-link-bg: rgba(0, 0, 0, 0.1);
+    --nav-link-hover: rgba(0, 0, 0, 0.2);
+    --column-default-bg: #ffffff;
+    --nav-links-bg: #FCFCFC;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+    height: 100vh;
+}
+
+.main-container {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+}
+
+/* Navbar Styles */
+.navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    /* background: var(--navbar-bg); */
+    /* backdrop-filter: blur(10px); */
+    z-index: 1000;
+    /* border-bottom: 1px solid rgba(255, 255, 255, 0.1); */
+}
+
+.nav-brand span {
+    color: var(--text-color);
+    font-family: 'Relationship de Melodrame', sans-serif;
+    font-size: clamp(0.8rem, 1vw, 15px);
+}
+
+.hamburger-menu {
+    display: none;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    background-color: #FCFCFC;
+    border-radius: 25px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.nav-link {
+    color: #000000;
+    text-decoration: none;
+    padding: 10px 2rem;
+    font-size: clamp(1rem, 1vw, 20px);
+    font-family: 'Relationship de Melodrame', sans-serif;
+    /* background: var(--nav-link-bg); */
+    /* border-radius: 25px; */
+    transition: all 0.3s ease;
+    /* backdrop-filter: blur(5px); */
+}
+
+.nav-link-active {
+    text-decoration: underline;
+}
+
+/* .nav-link:hover {
+    background: var(--nav-link-hover);
+    transform: translateY(-2px);
+} */
+
+/* Theme Switch Styles */
+.theme-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+}
+
+.theme-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.theme-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--nav-link-bg);
+    transition: 0.4s;
+    border-radius: 30px;
+    backdrop-filter: blur(5px);
+}
+
+.theme-slider:before {
+    position: absolute;
+    content: "🌙";
+    height: 26px;
+    width: 26px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+}
+
+input:checked + .theme-slider {
+    background: var(--nav-link-hover);
+}
+
+input:checked + .theme-slider:before {
+    transform: translateX(30px);
+    content: "🌚";
+}
+
+.theme-slider:hover {
+    background: var(--nav-link-hover);
+}
+
+/* Columns Container */
+.columns-container {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+}
+
+.column {
+    position: relative;
+    height: 100vh;
+    width: 25%;
+    overflow: hidden;
+    cursor: pointer;
+    /* background: var(--column-default-bg); */
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    border-inline: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.column::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: 1;
+}
+
+/* Hover zones for directional effects */
+.column::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 3;
+    pointer-events: none;
+}
+
+
+/* Background Images for each column */
+.column[data-bg="column1"] {
+    /* background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); */
+    /* background-image: url('images/empowerWoman.png'); */
+    background-size: cover;
+    background-position: center;
+}
+
+.column[data-bg="column1"]::before {
+    opacity: 1;
+    transform: translateX(0);
+    /* background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); */
+}
+
+.column[data-bg="column2"]::before {
+    /* background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); */
+    background-image: url('images/cartoonGirl.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.column[data-bg="column3"]::before {
+    /* background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); */
+    background-image: url('images/savaagePerfume.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.column[data-bg="column4"]::before {
+    /* background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); */
+    background-image: url('images/glassPerfume.png');
+    background-size: cover;
+    background-position: center;
+}
+
+/* Directional slide effects */
+.column.slide-from-left::before {
+    opacity: 1;
+    transform: translateX(0);
+    animation: slideFromLeft 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.column.slide-from-right::before {
+    opacity: 1;
+    transform: translateX(0);
+    animation: slideFromRight 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+@keyframes slideFromRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideFromLeft {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Show content when sliding */
+.column.slide-from-left .column-content,
+.column.slide-from-right .column-content {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+/* Hide content for non-active columns */
+.column.hide-content {
+    background: var(--column-default-bg) !important;
+}
+
+.column.hide-content::before {
+    opacity: 0;
+    transform: translateX(-100%);
+}
+
+.column.hide-content .column-content {
+    transform: translateX(-100px);
+    opacity: 0;
+}
+
+/* Show header when content is hidden (except first column) */
+.column.hide-content:not([data-bg="column1"]) .column-header {
+    opacity: 1;
+}
+
+/* Column Header - Visible by default */
+.column-header {
+    position: absolute;
+    bottom: 5%;
+    left: 5%;
+    /* background-color: rgba(255, 255, 255, 1); */
+    padding: 15px 30px;
+    transition: all 0.3s ease;
+    opacity: 1;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.column-header h3 {
+    font-family: 'Bohemian Soul', Arial, sans-serif;
+    color: #333;
+    margin: 0;
+}
+
+/* Hide header when column is hovered */
+.column:hover .column-header {
+    opacity: 0 !important;
+}
+
+/* First column header hidden by default since content is visible */
+.column[data-bg="column1"] .column-header {
+    opacity: 0;
+}
+
+/* Show first column header when another column is being hovered */
+.columns-container:hover .column[data-bg="column1"]:not(:hover) .column-header {
+    opacity: 1;
+}
+
+/* Column Content */
+.column-content {
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* padding: 40px; */
+    transform: translateX(-100px);
+    opacity: 0;
+    transition: all 0.8s ease 0.2s;
+    z-index: 2;
+}
+
+/* First column content always visible */
+.column[data-bg="column1"] .column-content {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.column:hover .column-content {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+/* Hide first column content when other columns are hovered */
+.columns-container:hover .column[data-bg="column1"]:not(:hover) .column-content {
+    transform: translateX(-100px);
+    opacity: 0;
+}
+
+/* Text Elements */
+div.first-column .text-middle {
+    position: absolute;
+    top: 86px;
+    left: 10%;
+    /* transform: translate(-50%, -50%); */
+    background-image: url('images/vision.png');
+    background-size: 100% 100%;
+    /* background-position: right top; */
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 30%;
+    /* background: rgba(255, 255, 255, 0.95); */
+    /* padding: 30px 40px; */
+    /* border-radius: 15px; */
+    text-align: center;
+    /* backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); */
+}
+
+.text-middle h3 {
+    color: #333;
+    font-size: 2rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.text-middle p {
+    color: #666;
+    font-size: clamp(0.8rem, 1vw, 15px);
+    line-height: 1.4;
+}
+
+.elevating-brand {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    background-color: rgba(255, 255, 255, 1);
+    width: 35%;
+    font-family: 'Relationship de Melodrame', sans-serif;
+    font-weight: 400;
+    padding: 1rem 0 1rem 0;
+    text-align: start;
+    border-radius: 0px 30px 30px 0px;
+}
+
+.empower-woman {
+    position: absolute;
+    top: 58%;
+    transform: translateY(-50%);
+    right: 10%;
+    width: 100%;
+    height: 30%;
+}
+
+.text-bottom {
+    position: absolute;
+    bottom: 5%;
+    left: 5%;
+    padding: 15px 30px;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+    width: 60%;
+    background: rgba(158, 158, 158, 0.1); 
+    backdrop-filter: blur(35px); 
+    -webkit-backdrop-filter: blur(35px); 
+    border-radius: 15px; 
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); 
+}
+
+
+
+.text-bottom h3 {
+    font-family: 'Bohemian Soul', Arial, sans-serif;
+    font-size: 0.9rem;
+}
+
+.text-bottom p {
+    font-family: 'Relationship de Melodrame', sans-serif;
+}
+
+.second-column .text-middle, .third-column .text-middle, .fourth-column .text-middle {
+    position: absolute;
+    top: 20%;
+    left: 5%;
+    width: 40%;
+    /* background-color: rgba(255, 255, 255, 1); */
+    font-family: 'Relationship de Melodrame', sans-serif;
+    font-weight: 400;
+    padding: 0.5rem;
+    text-align: center;
+    /* border-radius: 30px; */
+}
+
+/* Responsive Design */
+@media (max-width: 950px) {
+    body {
+        overflow-y: auto;
+    }
+
+    .hamburger-menu {
+        display: block;
+        cursor: pointer;
+        z-index: 1001;
+        order: 3;
+
+    }
+
+    .hamburger-icon {
+        width: 30px;
+        height: 20px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .hamburger-icon span {
+        display: block;
+        height: 2px;
+        width: 100%;
+        background-color: var(--text-color);
+        transition: all 0.3s ease;
+    }
+
+    .hamburger-icon.active span:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+    }
+
+    .hamburger-icon.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger-icon.active span:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+    }
+
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 30%;
+        height: 50vh;
+        background-color: var(--primary-bg);
+        padding: 80px 20px;
+        transition: right 0.3s ease;
+        align-items: center;
+        gap: 30px;
+        border-left: 1px solid var(--text-color-secondary);
+    }
+
+    .nav-toggle {
+        order: 2;
+    }
+
+    
+    .main-container {
+        height: auto;
+        min-height: 100vh;
+    }
+    
+    /* .navbar {
+        padding: 15px 20px;
+        position: fixed;
+        z-index: 1001;
+    }
+    
+    .nav-brand h2 {
+        font-size: 1.4rem;
+    }
+    
+    .nav-links {
+        gap: 8px;
+    }
+    
+    .nav-link {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    } */
+
+    /* .nav-links {
+    display: none;
+} */
+    
+    /* Slideshow container */
+    .slideshow-container {
+        position: relative;
+        height: 100vh;
+        overflow: hidden;
+        /* padding-top: 80px; */
+    }
+
+    .first-column {
+        padding-top: 80px;
+    }
+    
+    /* Horizontal slideshow layout */
+    .columns-container {
+        display: flex;
+        flex-direction: row;
+        height: calc(100vh - 80px);
+        width: 400%; /* 4 columns * 100% each */
+        transition: transform 0.5s ease-in-out;
+        transform: translateX(0%);
+    }
+    
+    .column {
+        width: 25%; /* Each column takes 1/4 of the container width */
+        /* height: 100%; */
+        min-height: calc(100vh - 80px);
+        cursor: default;
+        flex-shrink: 0;
+    }
+    
+    /* Show all backgrounds on mobile slideshow */
+    .column[data-bg="column1"]::before,
+    .column[data-bg="column2"]::before,
+    .column[data-bg="column3"]::before,
+    .column[data-bg="column4"]::before {
+        opacity: 1 !important;
+        transform: translateX(0) !important;
+    }
+    
+    /* Show all content on mobile slideshow */
+    .column-content {
+        padding: 40px 20px;
+        transform: translateX(0) !important;
+        opacity: 1 !important;
+    }
+    
+    /* Hide column headers on mobile since content is always visible */
+    .column-header {
+        opacity: 0 !important;
+    }
+    
+    /* Remove hover effects on mobile */
+    .column:hover::before {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    
+    .columns-container:hover .column:not(:hover) {
+        background: inherit !important;
+    }
+    
+    .columns-container:hover .column:not(:hover)::before {
+        opacity: 1 !important;
+        transform: translateX(0) !important;
+    }
+    
+    .columns-container:hover .column[data-bg="column1"]:not(:hover) .column-content {
+        transform: translateX(0) !important;
+        opacity: 1 !important;
+    }
+    
+    /* Hide hover zones on mobile */
+    .column .hover-left,
+    .column .hover-right {
+        display: none;
+    }
+
+    div.first-column .text-middle {
+        position: absolute;
+        top: 3%;
+        left: 10%;
+        background-image: url('images/vision.png');
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        width: 100%;
+    }    
+    
+    .text-middle {
+        padding: 20px 25px;
+        width: 90%;
+    }
+    
+    .text-middle h3 {
+        font-size: 1.5rem;
+    }
+    
+    .text-middle p {
+        font-size: 1rem;
+    }
+    
+    /* Slideshow Navigation Arrows */
+    .slideshow-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255, 255, 255, 0.9);
+        border: none;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 1002;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .slideshow-arrow:hover {
+        background: rgba(255, 255, 255, 1);
+        transform: translateY(-50%) scale(1.1);
+    }
+    
+    .slideshow-arrow:active {
+        transform: translateY(-50%) scale(0.95);
+    }
+    
+    .slideshow-prev {
+        left: 20px;
+    }
+    
+    .slideshow-next {
+        right: 20px;
+    }
+    
+    .slideshow-arrow svg {
+        color: #333;
+    }
+    
+    /* Slideshow Indicators */
+    .slideshow-indicators {
+        position: absolute;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 10px;
+        z-index: 1002;
+    }
+    
+    .indicator {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.5);
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    
+    .indicator.active {
+        background: rgba(255, 255, 255, 1);
+        transform: scale(1.2);
+    }
+    
+    .indicator:hover {
+        background: rgba(255, 255, 255, 0.8);
+    }
+    
+    /* Dark theme adjustments for slideshow */
+    [data-theme="dark"] .slideshow-arrow {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+    }
+    
+    [data-theme="dark"] .slideshow-arrow:hover {
+        background: rgba(255, 255, 255, 0.2);
+    }
+    
+    [data-theme="dark"] .slideshow-arrow svg {
+        color: #fff;
+    }
+    
+    [data-theme="dark"] .indicator {
+        background: rgba(255, 255, 255, 0.3);
+    }
+    
+    [data-theme="dark"] .indicator.active {
+        background: rgba(255, 255, 255, 0.9);
+    }
+}
+
+@media (max-width: 480px) {    
+    .navbar {
+        justify-content: space-between;
+        padding: 10px 15px;
+    }
+    
+    .text-middle {
+        padding: 15px 20px;
+        width: 95%;
+    }
+    
+    .text-middle h3 {
+        font-size: 1.3rem;
+    }
+    
+    .text-middle p {
+        font-size: 0.9rem;
+    }
+    
+    .column-content {
+        padding: 30px 15px;
+    }
+
+    .second-column .text-middle {
+        width: 90%;
+        top: 10%;
+        left: 5%;
+    }
+    
+    /* Smaller arrows on very small screens */
+    .slideshow-arrow {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .slideshow-prev {
+        left: 15px;
+    }
+    
+    .slideshow-next {
+        right: 15px;
+    }
+}
+
+/* Animation for page load */
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Text color adjustments for default background columns */
+[data-theme="light"] .column:not(:hover):not([data-bg="column1"]) .text-middle {
+    background: rgba(255, 255, 255, 1);
+    border: 1px solid #ddd;
+}
+
+[data-theme="light"] .column:not(:hover):not([data-bg="column1"]) .text-middle h3 {
+    color: #333;
+}
+
+[data-theme="light"] .column:not(:hover):not([data-bg="column1"]) .text-middle p {
+    color: #666;
+}
+
+[data-theme="light"] .column:not(:hover):not([data-bg="column1"]) .text-bottom {
+    background: rgba(255, 255, 255, 1);
+    border: 1px solid #ddd;
+}
+
+/* Dark theme adjustments */
+[data-theme="dark"] .column:not(:hover):not([data-bg="column1"]) .text-middle {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid #444;
+}
+
+[data-theme="dark"] .column:not(:hover):not([data-bg="column1"]) .text-middle h3 {
+    color: #fff;
+}
+
+[data-theme="dark"] .column:not(:hover):not([data-bg="column1"]) .text-middle p {
+    color: #ccc;
+}
+
+[data-theme="dark"] .column:not(:hover):not([data-bg="column1"]) .text-bottom {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid #444;
+}
+
+[data-theme="dark"] .column:not(:hover):not([data-bg="column1"]) .text-bottom span {
+    color: #fff;
+}
+
+/* Dark theme for column headers */
+[data-theme="dark"] .column-header {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid #444;
+}
+
+[data-theme="dark"] .column-header h3 {
+    color: #fff;
+}

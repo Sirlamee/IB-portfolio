@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progress Counter with Black Line</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        /* Progress container */
+        .progress-container {
+            position: relative;
+            width: 90%;
+            height: 4px;
+            background-color: #000;
+            margin: 50px auto;
+            border-radius: 2px;
+        }
+
+        /* Text container above the black line */
+        .progress-text {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        /* Counter number on the left (main progress indicator) */
+        .counter {
+            color: #333;
+            font-family: 'Courier New', monospace;
+            font-size: 28px;
+            letter-spacing: 2px;
+        }
+
+        /* Loading text on the right */
+        .loading-text {
+            color: #666;
+            font-size: 18px;
+        }
+
+        /* Button to start the progress */
+        .start-btn {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .start-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .start-btn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        /* Demo content */
+        .demo-content {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        /* Completion message */
+        .completion-message {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 18px;
+            color: #28a745;
+            font-weight: bold;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-content">
+        <h1>Progress Counter Demo</h1>
+        <p>Click the button to start the progress counter from 001 to 100</p>
+        
+        <button class="start-btn" id="startBtn">Start Progress</button>
+    </div>
+
+    <div class="progress-container">
+        <div class="progress-text">
+            <span class="counter" id="counter">001</span>
+            <span class="loading-text">Loading...</span>
+        </div>
+    </div>
+
+    <div class="completion-message" id="completionMessage">
+        Loading Complete! ✓
+    </div>
+
+    <script>
+        // Get references to HTML elements
+        const startBtn = document.getElementById('startBtn');
+        const counter = document.getElementById('counter');
+        const completionMessage = document.getElementById('completionMessage');
+        
+        // Progress variables
+        let currentNumber = 1;
+        let isRunning = false;
+        let intervalId;
+        
+        // Function to format number with leading zeros (001, 002, etc.)
+        function formatNumber(num) {
+            if (num < 10) {
+                return '00' + num;  // 001, 002, 003, etc.
+            } else if (num < 100) {
+                return '0' + num;   // 010, 011, 012, etc.
+            } else {
+                return num.toString(); // 100
+            }
+        }
+        
+        // Function to start the progress counter
+        function startProgress() {
+            // Don't start if already running
+            if (isRunning) return;
+            
+            // Reset everything
+            currentNumber = 1;
+            isRunning = true;
+            
+            // Hide completion message
+            completionMessage.style.display = 'none';
+            
+            // Disable the start button
+            startBtn.disabled = true;
+            startBtn.textContent = 'Counting...';
+            
+            // Set the total duration (5 seconds = 5000 milliseconds)
+            const totalDuration = 5000;
+            
+            // Calculate delay between each number update
+            // We need to count from 1 to 100 (100 numbers total)
+            const delayBetweenNumbers = totalDuration / 100;
+            
+            // Update the counter display
+            counter.textContent = formatNumber(currentNumber);
+            
+            // Start the counting process
+            intervalId = setInterval(() => {
+                // Move to next number
+                currentNumber++;
+                
+                // Update the display
+                counter.textContent = formatNumber(currentNumber);
+                
+                // Check if we've reached 100
+                if (currentNumber >= 100) {
+                    // Stop the interval
+                    clearInterval(intervalId);
+                    
+                    // Reset the button
+                    startBtn.disabled = false;
+                    startBtn.textContent = 'Start Progress';
+                    isRunning = false;
+                    
+                    // Show completion message
+                    completionMessage.style.display = 'block';
+                    
+                    // Optional: Auto-reset after a few seconds
+                    setTimeout(() => {
+                        currentNumber = 1;
+                        counter.textContent = formatNumber(currentNumber);
+                        completionMessage.style.display = 'none';
+                    }, 3000); // Reset after 3 seconds
+                }
+            }, delayBetweenNumbers);
+        }
+        
+        // Function to stop/reset the progress
+        function stopProgress() {
+            if (intervalId) {
+                clearInterval(intervalId);
+            }
+            isRunning = false;
+            currentNumber = 1;
+            counter.textContent = formatNumber(currentNumber);
+            startBtn.disabled = false;
+            startBtn.textContent = 'Start Progress';
+            completionMessage.style.display = 'none';
+        }
+        
+        // Add click event listener to the start button
+        startBtn.addEventListener('click', startProgress);
+        
+        // Optional: Double-click to reset
+        counter.addEventListener('dblclick', stopProgress);
+        
+        // Optional: Auto-start when page loads
+        // Uncomment the next line if you want it to start automatically
+        // window.addEventListener('load', startProgress);
+    </script>
+</body>
+</html>

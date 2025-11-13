@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Homepage</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <section class="main-container">
+        <!-- Navbar -->
+        <nav class="navbar">
+            <div class="nav-brand">
+                <img src="images/Vector.png" alt="Logo" class="logo">
+                <span>S--I</span>
+            </div>
+            <div class="hamburger-menu">
+                <div class="hamburger-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <div class="nav-links">
+                <a href="#" class="nav-link nav-link-active">Works</a>
+                <a href="../ABOUT/index.html" class="nav-link">About</a>
+                <a href="../CONTACT/index.html" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-toggle">
+                <label class="theme-switch">
+                    <input type="checkbox" id="theme-toggle">
+                    <span class="theme-slider"></span>
+                </label>
+            </div>
+        </nav>
+
+        <!-- Four Columns -->
+        <div class="slideshow-container">
+            <div class="columns-container">
+                <div class="column first-column active" data-bg="column1" data-link="../UIUX/index.html">
+                    <div class="column-header">
+                        <h3>UI/UX</h3>
+                    </div>
+                    <div class="column-content">
+                        <div class="text-middle">
+                            <div class="elevating-brand">
+                                <p>Elevating Brand Stories <br> Through Visual Design</p>
+                            </div>
+                        </div>
+                        <img src="images/empowerWoman.png" alt="Empower Woman" class="empower-woman">
+                        <div class="text-bottom">
+                            <h3>UI/UX</h3>
+                            <p>FIgma</p>
+                            <p>Adobe XD</p>
+                            <p>Framer</p>
+                            <!-- <span>Explore More</span> -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column second-column" data-bg="column2" data-link="LOADING PAGES/LOADING PAGE_2DMOTION/loadingPage.html">
+                    <div class="column-header">
+                        <h3>2D Motion Design</h3>
+                    </div>
+                    <div class="column-content">
+                        <div class="text-middle">
+                            <p>Elevating Brand Stories Through Visual Design</p>
+                        </div>
+                        <div class="text-bottom">
+                            <h3>2D Motion Design</h3>
+                            <p>Adobe illustrator</p>
+                            <p>After effect</p>
+                            <p>Adobe premier pro</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column third-column" data-bg="column3" data-link="LOADING PAGES/LOADING PAGE_3DVISUALIZER/loadingPage.html">
+                    <div class="column-header">
+                        <h3>3D Visualizer</h3>
+                    </div>
+                    <div class="column-content">
+                        <div class="text-middle">
+                            <p>Elevating Brand Stories Through Visual Design</p>
+                        </div>
+                        <div class="text-bottom">
+                            <h3>3D Visualizer</h3>
+                            <p>Adobe illustrator</p>
+                            <p>After effect</p>
+                            <p>Houdini</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column fourth-column" data-bg="column4" data-link="LOADING PAGES/LOADING PAGE_PLAYGROUND/loadingPage.html">
+                    <div class="column-header">
+                        <h3>Playground</h3>
+                    </div>
+                    <div class="column-content">
+                        <div class="text-middle">
+                            <p>Elevating Brand Stories Through Visual Design</p>
+                        </div>
+                        <div class="text-bottom">
+                            <h3>Playground</h3>
+                            <p>Adobe illustrator</p>
+                            <p>After effect</p>
+                            <p>Houdini</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slideshow Navigation Arrows -->
+            <button class="slideshow-arrow slideshow-prev" id="prevSlide">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+            <button class="slideshow-arrow slideshow-next" id="nextSlide">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+            
+            <!-- Slide Indicators -->
+            <div class="slideshow-indicators">
+                <span class="indicator active" data-slide="0"></span>
+                <span class="indicator" data-slide="1"></span>
+                <span class="indicator" data-slide="2"></span>
+                <span class="indicator" data-slide="3"></span>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>

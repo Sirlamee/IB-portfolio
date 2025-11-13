@@ -1,0 +1,574 @@
+@font-face {
+    font-family: 'Bohemian Soul';
+    src: url('fonts/BohemianSoul.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Relationship de Melodrame';
+    src: url('fonts/RelationshipMélodrame.ttf') format('truetype');
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+:root {
+    --primary-bg: #1a1a1a;
+    --navbar-bg: rgba(255, 255, 255, 0.1);
+    --text-color: #ffffff;
+    --text-color-secondary: rgba(255, 255, 255, 0.4);
+    --text-color-tertiary: rgba(255, 255, 255, 0.05);
+    --text-color-reverse: #333333;
+    --nav-link-bg: rgba(255, 255, 255, 0.2);
+    --nav-link-hover: rgba(255, 255, 255, 0.3);
+    --column-default-bg: #000000;
+    --nav-links-bg: #000000;
+}
+
+[data-theme="light"] {
+    --primary-bg: #ffffff;
+    --navbar-bg: rgba(0, 0, 0, 0.1);
+    --text-color: #333333;
+    --text-color-secondary: rgba(0, 0, 0, 0.4);
+    --text-color-tertiary: rgba(0, 0, 0, 0.05);
+    --text-color-reverse: #ffffff;
+    --nav-link-bg: rgba(0, 0, 0, 0.1);
+    --nav-link-hover: rgba(0, 0, 0, 0.2);
+    --column-default-bg: #ffffff;
+    --nav-links-bg: #FCFCFC;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    overflow-x: hidden;
+}
+
+.main-container {
+    position: relative;
+    background-color: var(--primary-bg);
+    /* height: 100vh; */
+    width: 100%;
+    padding-inline: 3rem;
+}
+
+/* Navbar Styles */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 3rem;
+    z-index: 1000;
+    /* background-color: var(--primary-bg); */
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(35px);
+}
+
+.nav-brand span {
+    color: var(--text-color);
+    font-family: 'Relationship de Melodrame', sans-serif;
+    font-size: clamp(0.8rem, 1vw, 15px);
+}
+
+.hamburger-menu {
+    display: none;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    background-color: #FCFCFC;
+    border-radius: 25px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.nav-link {
+    color: #000000;
+    /* text-decoration: none; */
+    padding: 10px 2rem;
+    font-size: clamp(1rem, 1vw, 20px);
+    font-family: 'Relationship de Melodrame', sans-serif;
+    /* background: var(--nav-link-bg); */
+    /* border-radius: 25px; */
+    transition: all 0.3s ease;
+    /* backdrop-filter: blur(5px); */
+}
+
+.nav-link-active {
+    text-decoration: underline;
+}
+
+.desktop-hide {
+    display: none !important;
+}
+
+.mobile-hide {
+    display: block;
+}
+
+
+
+
+/* .nav-link:hover {
+    background: var(--nav-link-hover);
+    transform: translateY(-2px);
+} */
+
+/* Theme Switch Styles */
+.theme-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+}
+
+.theme-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.theme-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--nav-link-bg);
+    transition: 0.4s;
+    border-radius: 30px;
+    backdrop-filter: blur(5px);
+}
+
+.theme-slider:before {
+    position: absolute;
+    content: "🌙";
+    height: 26px;
+    width: 26px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+}
+
+input:checked+.theme-slider {
+    background: var(--nav-link-hover);
+}
+
+input:checked+.theme-slider:before {
+    transform: translateX(30px);
+    content: "🌚";
+}
+
+.theme-slider:hover {
+    background: var(--nav-link-hover);
+}
+
+
+/********
+
+first section 
+
+********/
+
+section.first-section {
+    padding-block: 100px;
+    /* height: 100vh; */
+}
+
+div.contact-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+div.grid-container {
+    display: grid;
+    grid-template-columns: 50% 40%;
+    justify-content: space-between;
+    gap: 5rem;
+}
+
+
+div.heading-arrow-container {
+    display: grid;
+    grid-template-columns: 50% 40%;
+    justify-content: space-between;
+    gap: 5rem;
+    /* align-items: center; */
+    /* margin-bottom: 50px; */
+}
+
+h1#lets-connect {
+    font-size: clamp(2rem, 5vw, 96px);
+    font-weight: 400;
+    font-family: 'Bohemian Soul', sans-serif;
+    color: var(--text-color);
+    margin-bottom: 50px;
+}
+
+div.grid-item-1 {
+    display: flex;
+    flex-direction: column;
+    padding-block-start: 0.5rem;
+}
+
+div.grid-item-1 .contact-icons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+div.grid-item-1 .contact-icons img {
+    border: 0.5px solid var(--text-color-secondary);
+    border-radius: 10px;
+    padding: 0.5rem;
+    background-color: #FCFCFC;
+}
+
+div.grid-item-1 .FAQs {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+div.grid-item-1 .FAQs h2 {
+    font-size: clamp(1.5rem, 3vw, 32px);
+    font-weight: 400;
+    font-family: 'Bohemian Soul', sans-serif;
+
+    color: var(--text-color);
+    margin-bottom: 20px;
+
+}
+
+div.grid-item-1 .FAQ-item {
+    display: flex;
+    flex-direction: column;
+    /* gap: 10px; */
+    background-color: var(--text-color-tertiary);
+    border-radius: 10px;
+    padding: 1rem 1.5rem;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+div.FAQ-item-heading {
+    position: relative;
+    padding: 10px 0px;
+
+}
+
+div.grid-item-1 .FAQ-item h3 {
+    font-size: clamp(1rem, 1vw, 18px);
+    font-weight: 400;
+    font-family: 'Bohemian Soul', sans-serif;
+    color: var(--text-color);
+    margin-bottom: 10px;
+}
+
+/* div.grid-item-1 .FAQ-item p {
+    font-size: clamp(0.8rem, 1vw, 16px);
+    font-weight: 400;
+    font-family: 'Relationship de Melodrame', sans-serif;
+    color: var(--text-color);
+    margin-bottom: 10px;
+} */
+
+button.toggle-btn {
+    position: absolute;
+    top: 50%;
+    right: 0%;
+    transform: translateY(-50%);
+    width: 32px;
+    height: 32px;
+    border: none;
+    color: var(--text-color);
+    background-color: transparent;
+    font-size: 24px;
+    font-weight: 400;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    /* box-shadow: 0 2px 8px rgba(52, 152, 219, 0.3); */
+}
+
+button.toggle-btn.active {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+div.FAQ-item-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+div.FAQ-item-content.expanded {
+    max-height: 500px;
+}
+
+div.FAQ-item-content p {
+    padding: 10px 0px;
+    font-size: clamp(0.8rem, 1vw, 16px);
+    font-weight: 400;
+    font-family: 'Relationship de Melodrame', sans-serif;
+    color: var(--text-color);
+    transform: translateY(-10px);
+    transition: all 0.3s ease 0.1s;
+    /* margin-bottom: 10px; */
+}
+
+div.FAQ-item-content.expanded p {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/********
+
+GRID ITEM 2 
+
+********/
+
+div.form-heading {
+    display: flex;
+    align-items: center;
+    gap: 5rem;
+}
+
+div.arrow-icon {
+    display: flex;
+    /* align-items: center; */
+    /* width: 80%; */
+    /* height: 32px; */
+}
+
+div.arrow-icon span {
+    font-size: clamp(4rem, 8vw, 170px);
+    font-weight: lighter;
+    font-family: 'Bohemian Soul', sans-serif;
+    color: var(--text-color);
+    width: 100%;
+}
+
+div.form-heading-content {
+    display: flex;
+}
+
+
+div.form-heading-content p {
+    font-size: clamp(1.6rem, 2vw, 40px);
+    font-weight: 400;
+    font-family: 'Relationship de Melodrame', sans-serif;
+    color: var(--text-color);
+    margin-bottom: 10px;
+}
+
+div.form-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+div.form-container form input {
+    border: 0px;
+    border-bottom: 1px solid var(--text-color-secondary);
+    padding-block: 0.5rem;
+    background-color: transparent;
+    color: var(--text-color);
+    font-size: clamp(1.5rem, 2vw, 32px);
+    font-weight: 400;
+    font-family: 'Relationship de Melodrame', sans-serif;
+    margin-bottom: 10px;
+}
+
+div.form-container form textarea {
+    border: 0px;
+    border-bottom: 1px solid var(--text-color-secondary);
+    padding-top: 1rem;
+    padding-bottom: 3rem;
+    background-color: transparent;
+    color: var(--text-color);
+    font-size: clamp(1.5rem, 2vw, 32px);
+    font-weight: 400;
+    font-family: 'Relationship de Melodrame', sans-serif;
+    margin-bottom: 30px;
+}
+
+div.form-buttonClick h4 {
+    font-size: clamp(1.5rem, 2vw, 32px);
+    font-weight: 400;
+    font-family: 'Relationship de Melodrame', sans-serif;
+    color: var(--text-color);
+    margin-bottom: 10px;
+}
+
+div.list-of-buttons {
+    display: flex;
+    /* gap: 1rem; */
+    justify-content: space-between;
+}
+
+div.list-of-buttons a {
+    border: 1px solid var(--text-color-secondary);
+    padding: 0.5rem 1.5rem;
+    border-radius: 50px;
+    font-size: clamp(1rem, 1.5vw, 20px);
+    font-weight: 400;
+    font-family: 'Relationship de Melodrame', sans-serif;
+    color: var(--text-color);
+    text-align: center;
+}
+
+form .form-submit button {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-color-reverse);
+    background-color: var(--text-color);
+    padding: 5px;
+    border-radius: 10px;
+    font-size: clamp(1rem, 2vw, 20px);
+    font-weight: 400;
+    font-family: 'Relationship de Melodrame', sans-serif;
+}
+
+form .form-submit button::after {
+    content: url('images/arrow.png');
+    margin-left: 10px;
+}
+
+
+
+
+section.section:last-child {
+    margin-bottom: 0;
+    padding-bottom: 50px;
+}
+
+@media (max-width: 950px) {
+    section.section {
+        height: auto;
+        margin-bottom: 100px;
+    }
+
+    .hamburger-menu {
+        display: block;
+        cursor: pointer;
+        z-index: 1001;
+    }
+
+    .hamburger-icon {
+        width: 30px;
+        height: 20px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .hamburger-icon span {
+        display: block;
+        height: 2px;
+        width: 100%;
+        background-color: var(--text-color);
+        transition: all 0.3s ease;
+    }
+
+    .hamburger-icon.active span:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+    }
+
+    .hamburger-icon.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger-icon.active span:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+    }
+
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        height: 100vh;
+        background-color: var(--primary-bg);
+        padding: 80px 20px;
+        transition: right 0.3s ease;
+        align-items: center;
+        gap: 30px;
+        border-left: 1px solid var(--text-color-secondary);
+    }
+
+    .desktop-hide {
+        display: block !important;
+    }
+
+    .mobile-hide {
+        display: none !important;
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+
+    h1#lets-connect {
+        text-align: center;
+    }
+
+    /* .nav-toggle {
+        margin-top: 20px;
+    } */
+
+    div.heading-arrow-container {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+
+    div.grid-container {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 500px) {
+    .main-container {
+        padding-inline: 2rem;
+    }
+
+    /* Navbar Styles */
+    .navbar {
+        padding: 20px 2rem;
+    }
+
+    div.list-of-buttons {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+
+}

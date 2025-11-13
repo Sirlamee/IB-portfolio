@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collapsible Menu</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body.light-theme {
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        body.dark-theme {
+            background-color: #1a1a1a;
+            color: #f5f5f5;
+        }
+
+        .menu-container {
+            max-width: 300px;
+        }
+
+        .menu-toggle {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .menu-toggle:hover {
+            background-color: #0056b3;
+        }
+
+        .hamburger {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            transition: all 0.3s;
+            border-radius: 2px;
+        }
+
+        .hamburger.open:nth-child(1) {
+            transform: rotate(45deg) translate(7px, 7px);
+        }
+
+        .hamburger.open:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.open:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        .menu-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background-color: white;
+            border-radius: 0 0 5px 5px;
+        }
+
+        .dark-theme .menu-content {
+            background-color: #2a2a2a;
+        }
+
+        .menu-content.open {
+            max-height: 300px;
+            border: 1px solid #ddd;
+            border-top: none;
+        }
+
+        .dark-theme .menu-content.open {
+            border-color: #444;
+        }
+
+        .menu-links {
+            list-style: none;
+            padding: 10px 0;
+        }
+
+        .menu-links li {
+            border-bottom: 1px solid #eee;
+        }
+
+        .dark-theme .menu-links li {
+            border-bottom-color: #444;
+        }
+
+        .menu-links li:last-child {
+            border-bottom: none;
+        }
+
+        .menu-links a {
+            display: block;
+            padding: 12px 20px;
+            text-decoration: none;
+            color: #333;
+            transition: background-color 0.2s;
+        }
+
+        .dark-theme .menu-links a {
+            color: #f5f5f5;
+        }
+
+        .menu-links a:hover {
+            background-color: #f0f0f0;
+        }
+
+        .dark-theme .menu-links a:hover {
+            background-color: #3a3a3a;
+        }
+
+        .theme-switch-container {
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #eee;
+        }
+
+        .dark-theme .theme-switch-container {
+            border-top-color: #444;
+        }
+
+        .theme-switch-label {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: 0.4s;
+            border-radius: 24px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: 0.4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: #007bff;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+    </style>
+</head>
+<body class="light-theme">
+    <div class="menu-container">
+        <button class="menu-toggle" id="menuToggle">
+            <span class="hamburger"></span>
+            <span class="hamburger"></span>
+            <span class="hamburger"></span>
+        </button>
+        
+        <div class="menu-content" id="menuContent">
+            <ul class="menu-links">
+                <li><a href="javascript:void(0)">Home</a></li>
+                <li><a href="javascript:void(0)">About</a></li>
+                <li><a href="javascript:void(0)">Contact</a></li>
+            </ul>
+            
+            <div class="theme-switch-container">
+                <span class="theme-switch-label">Dark Mode</span>
+                <label class="switch">
+                    <input type="checkbox" id="themeSwitch">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const menuContent = document.getElementById('menuContent');
+        const hamburgerBars = document.querySelectorAll('.hamburger');
+        const themeSwitch = document.getElementById('themeSwitch');
+        const body = document.body;
+
+        // Toggle menu
+        menuToggle.addEventListener('click', () => {
+            menuContent.classList.toggle('open');
+            hamburgerBars.forEach(bar => bar.classList.toggle('open'));
+        });
+
+        // Theme switch
+        themeSwitch.addEventListener('change', () => {
+            if (themeSwitch.checked) {
+                body.classList.remove('light-theme');
+                body.classList.add('dark-theme');
+            } else {
+                body.classList.remove('dark-theme');
+                body.classList.add('light-theme');
+            }
+        });
+    </script>
+</body>
+</html>

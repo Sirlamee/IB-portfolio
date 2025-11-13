@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+    <section class="main-container">
+        <!-- Navbar -->
+        <nav class="navbar">
+            <div class="nav-brand">
+                <img src="images/Vector.png" alt="Logo" class="logo">
+                <span>S--I</span>
+            </div>
+            <div class="hamburger-menu">
+                <div class="hamburger-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <div class="nav-links">
+                <a href="../HOMEPAGE/index.html" class="nav-link ">Works</a>
+                <a href="#" class="nav-link nav-link-active">About</a>
+                <a href="../CONTACT/index.html" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-toggle">
+                <label class="theme-switch">
+                    <input type="checkbox" id="theme-toggle">
+                    <span class="theme-slider"></span>
+                </label>
+            </div>
+        </nav>
+        <section class="section first-section hero-section"> <!-- hero section / first section -->
+            <div class="text-container">
+                <div class="name-container">
+                    <h1>Salami Ibrahim</h1>
+                </div>
+                <div class="about">
+                    <p>Lorem ipsum dolor sit amet consectetur. Hac tincidunt neque sodales ut tristique nibh sed. Ac sed
+                        pellentesque nisi suscipit. Etiam magna diam sollicitudin sed est egestas. Odio tortor aenean
+                        enim euismod est dignissim. <span>At nam at interdum tincidunt. Neque phasellus aliquet lorem
+                            amet. Pellentesque tincidunt in arcu mollis mauris amet sollicitudin at aliquam. Aenean
+                            lectus scelerisque tempus sed scelerisque tellus. Eu etiam vel aliquam scelerisque. Pulvinar
+                            nam nunc habitant faucibus velit semper in. Pulvinar aliquet nisi dictum eget risus nulla.
+                            Felis ullamcorper nunc ultrices fusce velit massa. Sed semper fringilla elit cras nunc et
+                            vel. Lorem elementum molestie risus</span></p>
+                </div>
+            </div>
+            <div class="image-container">
+                <div class="main-image">
+                    <img src="images/image.png" alt="IB">
+                </div>
+                <div class="other-images">
+                    <img src="images/Rectangle54.png" alt="IB2">
+                    <img src="images/Rectangle55.png" alt="IB3">
+                </div>
+            </div>
+        </section>
+
+        <section class="section second-section">
+            <div class="video-section" id="videoSection">
+                <div class="white-overlay" id="whiteOverlay"></div>
+                <div class="video-container" id="videoContainer">
+                    <video id="myVideo" muted loop>
+                        <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+                            type="video/mp4">
+                    </video>
+                    <button onclick="toggleMute()">🔊</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="section third-section">
+            <div class="text-container">
+                <div class="heading-container">
+                    <h2>Why you should work with me</h2>
+                </div>
+                <div class="paragraph-container">
+                    <p>Lorem ipsum dolor sit amet consectetur. Hac tincidunt neque sodales ut tristique nibh sed. <br>
+                        Ac sed pellentesque nisi suscipit. Etiam magna diam sollicitudin sed est egestas. Odio tortor
+                        aenean enim euismod</p>
+                </div>
+            </div>
+            <div class="skills-container">
+                <div class="skill-item skill-item-1">
+                    <h5>Over 4+ years experience
+                        in designing</h5>
+                </div>
+                <div class="skill-item skill-item-2">
+                    <h5>Ability to use over 6 design sofware which ranges from
+                        figma, blender, after effect, framer, illustrator, spline,premier pro...</h5>
+                </div>
+                <div class="second-row">
+                    <div class="skill-item skill-item-3">
+                        <h5>Effective collaboration skills</h5>
+                    </div>
+                    <div class="skill-item skill-item-4">
+                        <h5>Ability to cross-pollinate different
+                            design softwares</h5>
+                    </div>
+                    <div class="skill-item skill-item-5">
+                        <h5>Seamless client experience</h5>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section fourth-section">
+            <div class="link-image-grid">
+                <div class="image-column">
+                    <!-- <div class="placeholder-text">Hover over a link to see its image</div> -->
+
+                    <img src="images/arsenal.jpg" alt="Arsenal Emirates Stadium"
+                        class="image-display placeholder-image arsenal-image" data-target="arsenal">
+
+                    <img src="images/messi.png" alt="Messi the GOAT" class="image-display messi-image"
+                        data-target="messi">
+
+                    <img src="images/tech.png" alt="Playing games" class="image-display tech-image" data-target="tech">
+
+                    <img src="images/workout.png" alt="Workout" class="image-display workout-image"
+                        data-target="workout">
+
+                    <img src="images/photography.png" alt="Photography" class="image-display photography-image"
+                        data-target="photography">
+                </div>
+
+                <div class="links-column">
+                    <h2>
+                        <a href="javascript:void(0)" class="link-item" data-image="arsenal">ARSENAL FAN </a> since day
+                        one. If you ask me, I think <a href="javascript:void(0)" class="link-item"
+                            data-image="messi">MESSI </a> is the GOAT. When I'm not designing, I'm most likely <a
+                            href="javascript:void(0)" class="link-item" data-image="tech">GAMING </a>. I spend my early
+                        hours of the day <a href="javascript:void(0)" class="link-item" data-image="workout">WORKING OUT
+                        </a> and I enjoy watching <a href="javascript:void(0)" class="link-item"
+                            data-image="photography">DOCUMENTARIES</a>
+                    </h2>
+                </div>
+            </div>
+        </section>
+
+        <section class="section fifth-section">
+            <div class="text-container">
+                <div class="heading-container">
+                    <h2>Throughout the years, I’ve been honoured to work with small and large client around the world.
+                        Here are some of them</h2>
+                </div>
+                <div class="list-container">
+                    <ul>
+                        <li class="text-line" data-text="Dixstone">Dixstone</li>
+                        <li class="text-line" data-text="Cleanstate">Cleanstate</li>
+                        <li class="text-line" data-text="Cleanstate">Cleanstate</li>
+                        <li class="text-line" data-text="Cleanstate">Cleanstate</li>
+                        <li class="text-line" data-text="Cleanstate">Cleanstate</li>
+                        <li class="text-line" data-text="Cleanstate">Cleanstate</li>
+                        <li class="text-line" data-text="Cleanstate">Cleanstate</li>
+                        <li class="text-line" data-text="Cleanstate">Cleanstate</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section sixth-section">
+            <div class="image-text-container">
+                <div class="image-container">
+                    <img src="images/laptop-boy.png" alt="IB">
+                </div>
+                <div class="text-container">
+                    <p>Guess you know enough about me already so, don't be shy and let's work together</p>
+                    <h2>Say Hello</h2>
+                </div>
+            </div>
+        </section>
+
+
+    </section>
+
+
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

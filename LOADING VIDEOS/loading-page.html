@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Main Page</title>
+    <style>
+        /* Your regular page styling */
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        
+        /* Loading overlay styling */
+        #loadingOverlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            display: none;
+            z-index: 9999;
+        }
+        
+        #loadingVideo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        #progressContainer {
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 10px;
+            background-color: gray;
+            border-radius: 5px;
+        }
+        
+        #progressBar {
+            width: 0%;
+            height: 100%;
+            background-color: #00ff00;
+            border-radius: 5px;
+            transition: width 0.1s ease;
+        }
+    </style>
+</head>
+<body>
+    <!-- Your regular page content -->
+    <h1>Welcome to My Website</h1>
+    <p>Click the link below to go to the next page:</p>
+    
+    <!-- The trigger link -->
+    <a href="#" id="triggerLink">Go to Next Page</a>
+    
+    <!-- Loading overlay (hidden initially) -->
+    <div id="loadingOverlay">
+        <video id="loadingVideo" muted>
+            <source src="loading-video.mp4" type="video/mp4">
+        </video>
+        <div id="progressContainer">
+            <div id="progressBar"></div>
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById('triggerLink').addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Show loading overlay
+            document.getElementById('loadingOverlay').style.display = 'block';
+            
+            // Start video
+            const video = document.getElementById('loadingVideo');
+            video.play();
+            
+            // Start progress bar
+            let progress = 0;
+            const duration = 5000; // 5 seconds
+            const progressBar = document.getElementById('progressBar');
+            
+            const interval = setInterval(() => {
+                progress += (100 / (duration / 100));
+                progressBar.style.width = progress + '%';
+                
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    window.location.href = 'next-page.html';
+                }
+            }, 100);
+        });
+    </script>
+</body>
+</html>

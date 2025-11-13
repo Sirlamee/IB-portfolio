@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Text Painter</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 40px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 800px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .text-line {
+            font-size: 24px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            user-select: none;
+        }
+
+        .letter {
+            color: #888;
+            transition: color 0.1s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .letter:hover {
+            color: #333;
+        }
+
+        .letter.painted {
+            color: #000;
+        }
+
+        .reset-btn {
+            display: block;
+            margin: 30px auto 0;
+            padding: 12px 30px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 25px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .reset-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .instructions {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Interactive Text Painter</h1>
+        <div class="instructions">
+            Hover over any letter to paint it black. The color will remain after you move your cursor away!
+        </div>
+        
+        <div class="text-content">
+            <div class="text-line" data-text="Welcome to the interactive text painter!">Welcome to the interactive text painter!</div>
+            <div class="text-line" data-text="Move your cursor over any letter to paint it black.">Move your cursor over any letter to paint it black.</div>
+            <div class="text-line" data-text="Each letter you hover over will stay black permanently.">Each letter you hover over will stay black permanently.</div>
+            <div class="text-line" data-text="Create patterns and designs with your mouse movements.">Create patterns and designs with your mouse movements.</div>
+            <div class="text-line" data-text="This is a fun way to interact with text on a webpage!">This is a fun way to interact with text on a webpage!</div>
+            <div class="text-line" data-text="Try painting entire words or just random letters.">Try painting entire words or just random letters.</div>
+            <div class="text-line" data-text="The possibilities are endless with this simple effect.">The possibilities are endless with this simple effect.</div>
+        </div>
+
+        <button class="reset-btn" onclick="resetAllText()">Reset All Text</button>
+    </div>
+
+    <script>
+        function initializeText() {
+            const textLines = document.querySelectorAll('.text-line');
+            
+            textLines.forEach(line => {
+                const text = line.getAttribute('data-text');
+                line.innerHTML = '';
+                
+                for (let i = 0; i < text.length; i++) {
+                    const char = text[i];
+                    const span = document.createElement('span');
+                    span.className = 'letter';
+                    span.textContent = char;
+                    
+                    // Add hover event listener
+                    span.addEventListener('mouseenter', function() {
+                        this.classList.add('painted');
+                    });
+                    
+                    line.appendChild(span);
+                }
+            });
+        }
+
+        function resetAllText() {
+            const letters = document.querySelectorAll('.letter');
+            letters.forEach(letter => {
+                letter.classList.remove('painted');
+            });
+        }
+
+        // Initialize the text when the page loads
+        document.addEventListener('DOMContentLoaded', initializeText);
+    </script>
+</body>
+</html>
