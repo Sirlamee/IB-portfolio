@@ -25,7 +25,7 @@ a {
 
 :root {
     --primary-bg: #1a1a1a;
-    --navbar-bg: rgba(255, 255, 255, 0.1);
+    --navbar-bg: rgba(26, 26, 26, 0.1);
     --text-color: #ffffff;
     --nav-link-bg: rgba(255, 255, 255, 0.2);
     --nav-link-hover: rgba(255, 255, 255, 0.3);
@@ -36,7 +36,7 @@ a {
 
 [data-theme="light"] {
     --primary-bg: #ffffff;
-    --navbar-bg: rgba(0, 0, 0, 0.1);
+    --navbar-bg: rgba(255, 255, 255, 0.1);
     --text-color: #333333;
     --nav-link-bg: rgba(0, 0, 0, 0.1);
     --nav-link-hover: rgba(0, 0, 0, 0.2);
@@ -284,13 +284,21 @@ SECTION 2 STYLES
 
 .other-section .content-text .left-content {
     font-family: 'Relationship de Melodrame', sans-serif;
-    width: 30%;
+    width: 50%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
+}
+
+.other-section .content-text .left-content h2 {
+    font-family: 'Bohemian Soul', sans-serif;
+    font-size: clamp(1rem, 2vw, 40px);
+    font-weight: 400;
+    color: var(--text-color);
+    margin-bottom: 1rem;
 }
 
 .other-section .content-text .right-content .content-item {
@@ -432,7 +440,7 @@ RESPONSIVE DESIGN
 
     .navbar {
         position: fixed;
-        background: rgba(158, 158, 158, 0.1);
+        background: var(--navbar-bg);
         backdrop-filter: blur(35px);
         -webkit-backdrop-filter: blur(35px);
         padding: 20px 1.5rem;
@@ -446,15 +454,22 @@ RESPONSIVE DESIGN
         position: fixed;
         top: 0;
         right: -100%;
-        width: 50%;
+        width: 80%;
         height: 100vh;
         background-color: var(--primary-bg);
         padding: 80px 20px;
         transition: right 0.3s ease;
-        align-items: center;
+        /* align-items: center; */
         gap: 30px;
         border-left: 1px solid var(--text-color-secondary);
         border-radius: 0%;
+    }
+
+    .nav-link {
+        font-size: clamp(1.2rem, 2vw, 25px);
+        font-family: 'Bohemian Soul', sans-serif;
+        text-transform: uppercase;
+
     }
 
     .hamburger-menu {
@@ -506,12 +521,17 @@ RESPONSIVE DESIGN
 
     .section1 div.content-container {
         position: absolute;
-        top: 50%;
+        /* top: 50%;
         left: 40px;
-        transform: translate(0%, -50%);
+        transform: translate(0%, -50%); */
         color: #FCFCFC;
         width: 60%;
+        text-align: center;
     }
+
+    .other-section .content-text .left-content h2 {
+        display: none;
+        }
 
     .section1 .right-content {
         font-family: 'Relationship de Melodrame', sans-serif;

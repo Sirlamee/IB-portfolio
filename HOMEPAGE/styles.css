@@ -450,18 +450,6 @@ div.first-column .text-middle {
     font-family: 'Relationship de Melodrame', sans-serif;
 }
 
-.second-column .text-middle, .third-column .text-middle, .fourth-column .text-middle {
-    position: absolute;
-    top: 20%;
-    left: 5%;
-    width: 40%;
-    /* background-color: rgba(255, 255, 255, 1); */
-    font-family: 'Relationship de Melodrame', sans-serif;
-    font-weight: 400;
-    padding: 0.5rem;
-    text-align: center;
-    /* border-radius: 30px; */
-}
 
 /* Responsive Design */
 @media (max-width: 950px) {

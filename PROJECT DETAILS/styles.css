@@ -21,7 +21,7 @@ a {
 
 :root {
     --primary-bg: #1a1a1a;
-    --navbar-bg: rgba(255, 255, 255, 0.1);
+    --navbar-bg: rgba(26, 26, 26, 0.1);
     --text-color: #ffffff;
     --text-color-secondary: rgba(255, 255, 255, 0.4);
     --text-color-tertiary: rgba(255, 255, 255, 0.05);
@@ -34,7 +34,7 @@ a {
 
 [data-theme="light"] {
     --primary-bg: #ffffff;
-    --navbar-bg: rgba(0, 0, 0, 0.1);
+    --navbar-bg: rgba(255, 255, 255, 0.1);
     --text-color: #333333;
     --text-color-secondary: rgba(0, 0, 0, 0.4);
     --text-color-tertiary: rgba(0, 0, 0, 0.05);
@@ -68,7 +68,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 20px 3rem;
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--navbar-bg);
     backdrop-filter: blur(35px);
     -webkit-backdrop-filter: blur(35px);
 
@@ -98,7 +98,7 @@ body {
 }
 
 .nav-link {
-    color: #000000;
+    color: var(--text-color);
     /* text-decoration: none; */
     padding: 10px 2rem;
     font-size: clamp(1rem, 1vw, 20px);
@@ -305,6 +305,10 @@ span.cancel-button {
     /* font-size: 1.5rem; */
 }
 
+#x {
+    color: var(--text-color);
+}
+
 
 .drag-indicator {
     position: fixed;
@@ -367,15 +371,21 @@ section.section:last-child {
         position: fixed;
         top: 0;
         right: -100%;
-        width: 50%;
+        width: 80%;
         height: 100vh;
         background-color: var(--primary-bg);
         padding: 80px 20px;
         transition: right 0.3s ease;
-        align-items: center;
         gap: 30px;
         border-left: 1px solid var(--text-color-secondary);
         border-radius: 0%;
+    }
+
+    .nav-link {
+        font-size: clamp(1.2rem, 2vw, 25px);
+        font-family: 'Bohemian Soul', sans-serif;
+        text-transform: uppercase;
+
     }
 
     .hamburger-menu {

@@ -25,7 +25,7 @@ a {
 
 :root {
     --primary-bg: #1a1a1a;
-    --navbar-bg: rgba(255, 255, 255, 0.1);
+    --navbar-bg: rgba(26, 26, 26, 0.1);
     --text-color: #ffffff;
     --nav-link-bg: rgba(255, 255, 255, 0.2);
     --nav-link-hover: rgba(255, 255, 255, 0.3);
@@ -36,7 +36,7 @@ a {
 
 [data-theme="light"] {
     --primary-bg: #ffffff;
-    --navbar-bg: rgba(0, 0, 0, 0.1);
+    --navbar-bg: rgba(255, 255, 255, 0.1);
     --text-color: #333333;
     --nav-link-bg: rgba(0, 0, 0, 0.1);
     --nav-link-hover: rgba(0, 0, 0, 0.2);
@@ -621,7 +621,7 @@ SECTION 2 STYLES
 
     .navbar {
         position: fixed;
-        background: rgba(158, 158, 158, 0.1);
+        background: var(--navbar-bg);
         backdrop-filter: blur(35px);
         -webkit-backdrop-filter: blur(35px);
         padding: 20px 1.5rem;
@@ -635,15 +635,21 @@ SECTION 2 STYLES
         position: fixed;
         top: 0;
         right: -100%;
-        width: 50%;
+        width: 80%;
         height: 100vh;
         background-color: var(--primary-bg);
         padding: 80px 20px;
         transition: right 0.3s ease;
-        align-items: center;
         gap: 30px;
         border-left: 1px solid var(--text-color-secondary);
         border-radius: 0%;
+    }
+
+    .nav-link {
+        font-size: clamp(1.2rem, 2vw, 25px);
+        font-family: 'Bohemian Soul', sans-serif;
+        text-transform: uppercase;
+
     }
 
     .hamburger-menu {
