@@ -280,8 +280,8 @@ section.section1 {
 .section1 .right-content {
     font-family: 'Relationship de Melodrame', sans-serif;
     width: 50%;
-    justify-self: center;
-    text-align: center;
+    display: flex;
+    margin: 0 auto;
 }
 
 .section1 .bottom-content {
@@ -617,7 +617,7 @@ SECTION 2 STYLES
 
     .other-section .content-text .left-content h2 {
         display: none;
-        }
+    }
 
     .section .content-image img {
         height: auto;
