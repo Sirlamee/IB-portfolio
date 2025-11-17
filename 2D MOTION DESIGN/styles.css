@@ -25,7 +25,7 @@ a {
 
 :root {
     --primary-bg: #1a1a1a;
-    --navbar-bg: rgba(255, 255, 255, 0.1);
+    --navbar-bg: rgba(26, 26, 26, 0.1);
     --text-color: #ffffff;
     --nav-link-bg: rgba(255, 255, 255, 0.2);
     --nav-link-hover: rgba(255, 255, 255, 0.3);
@@ -36,7 +36,7 @@ a {
 
 [data-theme="light"] {
     --primary-bg: #ffffff;
-    --navbar-bg: rgba(0, 0, 0, 0.1);
+    --navbar-bg: rgba(255, 255, 255, 0.1);
     --text-color: #333333;
     --nav-link-bg: rgba(0, 0, 0, 0.1);
     --nav-link-hover: rgba(0, 0, 0, 0.2);
@@ -343,13 +343,21 @@ SECTION 2 STYLES
 
 .other-section .content-text .left-content {
     font-family: 'Relationship de Melodrame', sans-serif;
-    width: 30%;
+    width: 50%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
+}
+
+.other-section .content-text .left-content h2 {
+    font-family: 'Bohemian Soul', sans-serif;
+    font-size: clamp(1rem, 2vw, 40px);
+    font-weight: 400;
+    color: var(--text-color);
+    margin-bottom: 1rem;
 }
 
 .other-section .content-text .right-content .content-item {
@@ -387,22 +395,6 @@ SECTION 2 STYLES
     content: url(images/menu_light.svg);
 }
 
-
-.other-section .content-text .right-content .btn2 {
-    background-color: var(--primary-bg);
-    color: var(--text-color);
-    border: 1px solid var(--text-color);
-}
-
-.other-section .content-text .right-content .btn2::after {
-    content: url(images/globe_light.svg);
-    display: flex;
-    align-items: end;
-}
-
-[data-theme="light"] .other-section .content-text .right-content .btn2::after {
-    content: url(images/globe_dark.svg);
-}
 
 .section .content-image img {
     height: 50vh;
@@ -488,7 +480,7 @@ SECTION 2 STYLES
 
     .navbar {
         position: fixed;
-        background: rgba(158, 158, 158, 0.1);
+        background: var(--navbar-bg);
         backdrop-filter: blur(35px);
         -webkit-backdrop-filter: blur(35px);
         padding: 20px 1.5rem;
@@ -502,15 +494,21 @@ SECTION 2 STYLES
         position: fixed;
         top: 0;
         right: -100%;
-        width: 50%;
+        width: 80%;
         height: 100vh;
         background-color: var(--primary-bg);
         padding: 80px 20px;
         transition: right 0.3s ease;
-        align-items: center;
+        /* align-items: center; */
         gap: 30px;
         border-left: 1px solid var(--text-color-secondary);
         border-radius: 0%;
+    }
+
+    .nav-link {
+        font-size: clamp(1.2rem, 2vw, 25px);
+        font-family: 'Bohemian Soul', sans-serif;
+        text-transform: uppercase;
     }
 
     .hamburger-menu {
@@ -616,6 +614,10 @@ SECTION 2 STYLES
         height: 100%;
         position: relative;
     }
+
+    .other-section .content-text .left-content h2 {
+        display: none;
+        }
 
     .section .content-image img {
         height: auto;
