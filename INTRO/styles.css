@@ -185,13 +185,13 @@ a {
 .small-text {
     position: absolute;
     font-family: 'Relationship de Melodrame', Arial, sans-serif;
-    font-size: clamp(0.6rem, 1vw, 14px);
-    max-width: 250px;
+    font-size: clamp(1rem, 2vw, 24px);
+    max-width: 350px;
 }
 
 
 .top-right-text {
-    top: -60px;
+    top: -90px;
     right: 0px;
     text-align: right;
 }
@@ -293,10 +293,10 @@ p.content-text {
 
     }
 
-    .top-right-text,
+    /* .top-right-text,
     .bottom-left-text {
         font-size: clamp(0.8rem, 1.4vw, 16px);
-    }
+    } */
 
     h2.content-header {
         /* font-size: clamp(2.5rem, 4vw, 96px); */
