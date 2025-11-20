@@ -98,4 +98,14 @@
 
         // LOADING OVERLAY
 
+        // TRIGGER LINK
+        document.getElementById('triggerLink').addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            if (window.innerWidth <= 950) {
+              window.location.href = '../HOMEPAGE/index.html'; // Mobile - skip loading
+            } else {
+              window.location.href = 'LOADING PAGE/loadingPage.html'; // Desktop - show loading
+            }
+          });
 

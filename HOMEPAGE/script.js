@@ -332,36 +332,33 @@ document.addEventListener('DOMContentLoaded', function() {
         updateSlideshowState();
     });
     
-    // Optional: Auto-slide functionality (uncomment if desired)
-    /*
-    let autoSlideInterval;
-    
-    function startAutoSlide() {
-        if (!isSlideshow) return;
-        
-        autoSlideInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
-    }
-    
-    function stopAutoSlide() {
-        if (autoSlideInterval) {
-            clearInterval(autoSlideInterval);
-            autoSlideInterval = null;
-        }
-    }
-    
-    // Start auto-slide when in slideshow mode
-    if (isSlideshow) {
-        startAutoSlide();
-    }
-    
-    // Pause auto-slide on user interaction
-    [prevButton, nextButton, ...indicators].forEach(element => {
-        if (element) {
-            element.addEventListener('click', () => {
-                stopAutoSlide();
-                setTimeout(startAutoSlide, 3000); // Restart after 3 seconds
-            });
-        }
-    });
-    */
+});
+
+// TRIGGER LINKS
+
+document.getElementById('homeLink2').addEventListener('click', function(e) {
+    e.preventDefault();
+    if (window.innerWidth <= 950) {
+        window.location.href = '../2D MOTION DESIGN/index.html'; // Mobile - skip loading
+      } else {
+        window.location.href = 'LOADING PAGES/LOADING PAGE_2DMOTION/loadingPage.html'; // Desktop - show loading
+      }
+});
+
+document.getElementById('homeLink3').addEventListener('click', function(e) {
+    e.preventDefault();
+    if (window.innerWidth <= 950) {
+        window.location.href = '../3D VISUALIZER/index.html'; // Mobile - skip loading
+      } else {
+        window.location.href = 'LOADING PAGES/LOADING PAGE_3DVISUALIZER/loadingPage.html'; // Desktop - show loading
+      }
+});
+
+document.getElementById('homeLink4').addEventListener('click', function(e) {
+    e.preventDefault();
+    if (window.innerWidth <= 950) {
+        window.location.href = '../PLAYGROUND/index.html'; // Mobile - skip loading
+      } else {
+        window.location.href = 'LOADING PAGES/LOADING PAGE_PLAYGROUND/loadingPage.html'; // Desktop - show loading
+      }
 });
