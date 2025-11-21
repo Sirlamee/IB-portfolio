@@ -99,29 +99,16 @@
         // LOADING OVERLAY
 
         // TRIGGER LINK
-        // document.getElementById('triggerLink').addEventListener('click', function(e) {
-        //     e.preventDefault();
-            
-        //     if (window.matchMedia("(max-width: 950px)").matches) {
-        //       window.location.replace('../HOMEPAGE/index.html'); // Mobile - skip loading
-        //     } else {
-        //       window.location.replace('LOADING PAGE/loadingPage.html'); // Desktop - show loading
-        //     }
-        //   });
 
           document.getElementById('triggerLink').addEventListener('click', function(e) {
             e.preventDefault();
             
             // Debug info
             const info = `innerWidth: ${window.innerWidth}\nscreen.width: ${screen.width}\nmatchMedia: ${window.matchMedia("(max-width: 950px)").matches}\nuser agent: ${navigator.userAgent.includes('Mobile')}`;
-            
-            alert(info);
-            
+                        
             if (window.matchMedia("(max-width: 950px)").matches) {
               window.location.replace('../HOMEPAGE/index.html');
             } else {
               window.location.replace('LOADING PAGE/loadingPage.html');
             }
         });
-
-          
