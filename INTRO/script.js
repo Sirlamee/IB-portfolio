@@ -103,9 +103,9 @@
             e.preventDefault();
             
             if (window.innerWidth <= 950) {
-              window.location.href = '../HOMEPAGE/index.html'; // Mobile - skip loading
+              window.location.replace('../HOMEPAGE/index.html'); // Mobile - skip loading
             } else {
-              window.location.href = 'LOADING PAGE/loadingPage.html'; // Desktop - show loading
+              window.location.replace('LOADING PAGE/loadingPage.html'); // Desktop - show loading
             }
           });
 

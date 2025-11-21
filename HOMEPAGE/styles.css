@@ -15,6 +15,10 @@
     box-sizing: border-box;
 }
 
+a {
+    text-decoration: none;
+}
+
 :root {
     --primary-bg: #1a1a1a;
     --navbar-bg: rgba(255, 255, 255, 0.1);

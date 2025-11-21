@@ -28,7 +28,7 @@ window.addEventListener('load', function() {
 
         if (counter >= 100) {
             clearInterval(interval);
-            window.location.href = '../../../PLAYGROUND/index.html';
+            window.location.replace('../../../PLAYGROUND/index.html');
         }
     }, delayBetweenNumbers);
     

@@ -28,7 +28,7 @@ window.addEventListener('load', function() {
 
         if (counter >= 100) {
             clearInterval(interval);
-            window.location.href = '../../../3D VISUALIZER/index.html';
+            window.location.replace('../../../3D VISUALIZER/index.html');
         }
     }, delayBetweenNumbers);
     

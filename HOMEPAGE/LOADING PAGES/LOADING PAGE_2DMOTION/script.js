@@ -28,7 +28,7 @@ window.addEventListener('load', function() {
 
         if (counter >= 100) {
             clearInterval(interval);
-            window.location.href = '../../../2D MOTION DESIGN/index.html';
+            window.location.replace('../../../2D MOTION DESIGN/index.html');
         }
     }, delayBetweenNumbers);
     

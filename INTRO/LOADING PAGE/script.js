@@ -28,7 +28,7 @@ window.addEventListener('load', function() {
 
         if (counter >= 100) {
             clearInterval(interval);
-            window.location.href = '../../HOMEPAGE/index.html';
+            window.location.replace('../../HOMEPAGE/index.html'); // Mobile - skip loading
         }
     }, delayBetweenNumbers);
     
