@@ -102,10 +102,12 @@
         document.getElementById('triggerLink').addEventListener('click', function(e) {
             e.preventDefault();
             
-            if (window.innerWidth <= 950) {
+            if (window.matchMedia("(max-width: 950px)").matches) {
               window.location.replace('../HOMEPAGE/index.html'); // Mobile - skip loading
             } else {
               window.location.replace('LOADING PAGE/loadingPage.html'); // Desktop - show loading
             }
           });
 
+
+          
