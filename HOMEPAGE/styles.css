@@ -792,8 +792,9 @@ div.first-column .text-middle {
         opacity: 1;
     }
 }
-
-/* Text color adjustments for default background columns */
+ 
+/*  Text color adjustments for default background columns */
+/*
 [data-theme="light"] .column:not(:hover):not([data-bg="column1"]) .text-middle {
     background: rgba(255, 255, 255, 1);
     border: 1px solid #ddd;
@@ -810,9 +811,10 @@ div.first-column .text-middle {
 [data-theme="light"] .column:not(:hover):not([data-bg="column1"]) .text-bottom {
     background: rgba(255, 255, 255, 1);
     border: 1px solid #ddd;
-}
+} */
 
 /* Dark theme adjustments */
+/*
 [data-theme="dark"] .column:not(:hover):not([data-bg="column1"]) .text-middle {
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid #444;
@@ -833,9 +835,10 @@ div.first-column .text-middle {
 
 [data-theme="dark"] .column:not(:hover):not([data-bg="column1"]) .text-bottom span {
     color: #fff;
-}
+} */
 
 /* Dark theme for column headers */
+/*
 [data-theme="dark"] .column-header {
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid #444;
@@ -843,4 +846,4 @@ div.first-column .text-middle {
 
 [data-theme="dark"] .column-header h3 {
     color: #fff;
-}
+} */
