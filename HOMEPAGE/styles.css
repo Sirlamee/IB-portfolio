@@ -457,10 +457,6 @@ div.first-column .text-middle {
 
 /* Responsive Design */
 @media (max-width: 950px) {
-    body {
-        overflow-y: auto;
-    }
-
     .hamburger-menu {
         display: block;
         cursor: pointer;
@@ -520,14 +516,11 @@ div.first-column .text-middle {
 
     
     .main-container {
-        height: auto;
-        min-height: 100vh;
+        /* height: auto; */
+        height: 100vh;
+        overflow: hidden;
     }
 
-    .column {
-        height: 97vh;
-    }
-    
     
     /* .navbar {
         padding: 15px 20px;
