@@ -1,13 +1,3 @@
-@font-face {
-    font-family: 'Bohemian Soul';
-    src: url('fonts/BohemianSoul.otf') format('opentype');
-}
-
-@font-face {
-    font-family: 'Relationship de Melodrame';
-    src: url('fonts/RelationshipMélodrame.ttf') format('truetype');
-}
-
 
 * {
     margin: 0;
@@ -74,6 +64,25 @@ body {
     backdrop-filter: blur(35px);
 }
 
+/* Default theme - show light, hide dark */
+.light-theme-logo {
+  display: inline-block;
+}
+
+.dark-theme-logo {
+  display: none;
+}
+
+/* Dark theme - hide light, show dark */
+[data-theme="dark"] .light-theme-logo {
+  display: none;
+}
+
+[data-theme="dark"] .dark-theme-logo {
+  display: inline-block;
+}
+
+
 .nav-brand span {
     color: var(--text-color);
     font-family: 'Relationship de Melodrame', sans-serif;
@@ -125,62 +134,7 @@ body {
     transform: translateY(-2px);
 } */
 
-/* Theme Switch Styles */
-.theme-switch {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 30px;
-}
-
-.theme-switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-
-.theme-slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: var(--nav-link-bg);
-    transition: 0.4s;
-    border-radius: 30px;
-    backdrop-filter: blur(5px);
-}
-
-.theme-slider:before {
-    position: absolute;
-    content: "🌙";
-    height: 26px;
-    width: 26px;
-    left: 2px;
-    bottom: 2px;
-    background-color: white;
-    transition: 0.4s;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.8rem;
-}
-
-input:checked+.theme-slider {
-    background: var(--nav-link-hover);
-}
-
-input:checked+.theme-slider:before {
-    transform: translateX(30px);
-    content: "🌚";
-}
-
-.theme-slider:hover {
-    background: var(--nav-link-hover);
-}
-
+ 
 
 /********
 
@@ -202,7 +156,7 @@ div.contact-container {
 
 div.grid-container {
     display: grid;
-    grid-template-columns: 50% 40%;
+    grid-template-columns: 45% 45%;
     justify-content: space-between;
     gap: 5rem;
 }
@@ -210,7 +164,7 @@ div.grid-container {
 
 div.heading-arrow-container {
     display: grid;
-    grid-template-columns: 50% 40%;
+    grid-template-columns: 45% 45%;
     justify-content: space-between;
     gap: 5rem;
     /* align-items: center; */
@@ -247,7 +201,7 @@ div.grid-item-1 .contact-icons img {
 div.grid-item-1 .FAQs {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 1rem;
 }
 
 div.grid-item-1 .FAQs h2 {
@@ -329,7 +283,7 @@ div.FAQ-item-content.expanded {
 
 div.FAQ-item-content p {
     padding: 10px 0px;
-    font-size: clamp(0.8rem, 1vw, 16px);
+    font-size: clamp(1.5rem, 1.5vw, 30px);
     font-weight: 400;
     font-family: 'Relationship de Melodrame', sans-serif;
     color: var(--text-color);
@@ -386,7 +340,7 @@ div.form-heading-content p {
 div.form-container form {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 2.5rem;
 }
 
 div.form-container form input {

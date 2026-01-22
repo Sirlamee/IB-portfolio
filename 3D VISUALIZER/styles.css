@@ -1,14 +1,3 @@
-@font-face {
-    font-family: 'Bohemian Soul';
-    src: url('fonts/BohemianSoul.otf') format('opentype');
-}
-
-@font-face {
-    font-family: 'Relationship de Melodrame';
-    src: url('fonts/RelationshipMélodrame.ttf') format('truetype');
-}
-
-
 * {
     margin: 0;
     padding: 0;
@@ -79,8 +68,27 @@ a {
     gap: 5px;
 }
 
+/* Default theme - show light, hide dark */
+.light-theme-logo {
+  display: inline-block;
+}
+
+.dark-theme-logo {
+  display: none;
+}
+
+/* Dark theme - hide light, show dark */
+[data-theme="dark"] .light-theme-logo {
+  display: none;
+}
+
+[data-theme="dark"] .dark-theme-logo {
+  display: inline-block;
+}
+
+
 .nav-brand span {
-    color: #FCFCFC;
+    color: var(--text-color);
     font-family: 'Relationship de Melodrame', sans-serif;
     font-size: clamp(0.8rem, 1vw, 15px);
 }
@@ -114,63 +122,6 @@ a {
     text-decoration: underline;
 }
 
-/*******
- Theme Switch Styles 
- *******/
-.theme-switch {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 30px;
-}
-
-.theme-switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-
-.theme-slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: var(--nav-link-bg);
-    transition: 0.4s;
-    border-radius: 30px;
-    backdrop-filter: blur(5px);
-}
-
-.theme-slider:before {
-    position: absolute;
-    content: "🌙";
-    height: 26px;
-    width: 26px;
-    left: 2px;
-    bottom: 2px;
-    background-color: white;
-    transition: 0.4s;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.8rem;
-}
-
-input:checked+.theme-slider {
-    background: var(--nav-link-hover);
-}
-
-input:checked+.theme-slider:before {
-    transform: translateX(30px);
-    content: "🌚";
-}
-
-.theme-slider:hover {
-    background: var(--nav-link-hover);
-}
 
 /*******
 SECTION STYLES
@@ -213,23 +164,13 @@ section.section1 {
     color: #FCFCFC;
 }
 
-
-span.white-box {
-    background-color: #FCFCFC;
-    /* width: 100%; */
-    /* display: flex; */
-    min-width: clamp(2rem, 60%, 600px);
-    min-height: calc(20px + 1.5rem);
-    display: inline-block;
-}
-
 .section1 .left-content .content-item-header {
     font-size: clamp(1.5rem, 4.5vw, 70px);
     font-family: 'Bohemian Soul';
     font-weight: 400;
 }
 
-.section1 .right-content {
+.section1 .left-content .content-item-paragraph {
     font-family: 'Relationship de Melodrame', sans-serif;
     width: 50%;
     font-size: clamp(1rem, 2vw, 18px);
@@ -270,22 +211,74 @@ SECTION 2 STYLES
     padding: 0px 40px;
 }
 
-.column-b .column-content {
+/* .column-b .column-content {
     display: flex;
     justify-content: center;
     align-items: center;
-}
+} */
 
 .other-section .content-image {
     width: 100%;
-    height: 100%;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    height: 50vh;
     /* padding: 1rem; */
 }
 
-.other-section .content-image img {
+.thumbnail {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    /* height: 100%; */
+    height: 100%;
     object-fit: cover;
+    z-index: 2;
+    transition: opacity 0.4s ease;
+}
+
+.thumbnail.hidden {
+    opacity: 0;
+}
+
+.playButton {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.playButton:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+.playButton.hidden {
+    display: none;
+}
+
+.play-icon {
+    width: 0;
+    height: 0;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-left: 25px solid #FCFCFC;
+}
+
+.section .content-image .bg-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
 }
 
 .other-section .content-text {
@@ -350,48 +343,6 @@ SECTION 2 STYLES
     content: url(images/menu_light.svg);
 }
 
-.section .content-image {
-    position: relative;
-    overflow: hidden;
-    height: 50vh;
-    margin-bottom: 2rem;
-}
-
-.section .content-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: opacity 0.5s ease;
-}
-
-.section .content-image::before {
-    content: url(images/play-icon.png);
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    /* transform: translate(50%, 50%); */
-}
-
-.section .content-image .background-video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0;
-    transition: opacity 0.5s ease;
-}
-
-.content-image:hover img {
-    opacity: 0;
-}
-
-.content-image:hover video {
-    opacity: 1 !important;
-}
-
 .three-column-container {
     display: flex;
     justify-content: space-evenly;
@@ -401,16 +352,17 @@ SECTION 2 STYLES
 }
 
 .three-column-container .column {
-    padding: 1rem;
+    padding: 0.5rem;
     /* flex: 1; */
 }
 
-/* .three-column-container .column-b {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 90%;
-} */
+.column-a,
+.column-c {
+    flex: 0.25;
+    /* Both divs take equal space */
+    min-width: 0;
+}
+
 
 .column .column-content h2 {
     font-family: 'Bohemian Soul', sans-serif;
@@ -423,7 +375,7 @@ SECTION 2 STYLES
 
 .column .column-content p {
     font-family: 'Relationship de Melodrame', sans-serif;
-    font-size: clamp(14px, 1.2rem, 20px);
+    font-size: clamp(14px, 1rem, 20px);
     color: var(--text-color);
     text-align: center;
     margin-bottom: 1rem;

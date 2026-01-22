@@ -55,6 +55,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 toggleBtn.classList.remove('active');
                 toggleBtn.textContent = '+';
             } else {
+                // Close all other expanded cards
+                cards.forEach(otherCard => {
+                    const otherContent = otherCard.querySelector('.FAQ-item-content');
+                    const otherBtn = otherCard.querySelector('.toggle-btn');
+                    if (otherContent.classList.contains('expanded')) {
+                        otherContent.classList.remove('expanded');
+                        otherBtn.classList.remove('active');
+                        otherBtn.textContent = '+';
+                    }
+                });
+                
                 // Expand the card
                 cardContent.classList.add('expanded');
                 toggleBtn.classList.add('active');
