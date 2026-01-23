@@ -8,7 +8,7 @@ body {
 
 @font-face {
     font-family: 'Relationship de Melodrame';
-    src: url('../fonts/RelationshipMélodrame.ttf') format('truetype');
+    src: url('../../fonts/RelationshipMélodrame.ttf') format('truetype');
 }
 
 #loadingVideo {
