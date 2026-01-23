@@ -108,7 +108,7 @@
     }
 
     .nav-link {
-        color: var(--text-color);
+        color: #000000;
         text-decoration: none;
         padding: 10px 2rem;
         font-size: clamp(1rem, 1vw, 20px);
@@ -575,6 +575,7 @@
             font-size: clamp(1.2rem, 2vw, 25px);
             font-family: 'Bohemian Soul', sans-serif;
             text-transform: uppercase;
+            color: var(--text-color);
         }
 
         .nav-toggle {
