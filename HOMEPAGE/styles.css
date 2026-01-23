@@ -108,7 +108,7 @@
     }
 
     .nav-link {
-        color: #000000;
+        color: var(--text-color);
         text-decoration: none;
         padding: 10px 2rem;
         font-size: clamp(1rem, 1vw, 20px);
