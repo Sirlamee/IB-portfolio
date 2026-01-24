@@ -218,10 +218,6 @@
         flex: 1;
     }
 
-    .column:hover {
-        flex: 1;
-    }
-
     /* Background video */
     .bg-video {
         position: absolute;
@@ -242,10 +238,6 @@
         opacity: 1;
     }
 
-    .column:hover .bg-video {
-        opacity: 1;
-    }
-
     .column-heading {
         position: absolute;
         bottom: 5%;
@@ -258,10 +250,6 @@
         opacity: 1;
         transition: opacity 0.4s ease;
         pointer-events: none;
-    }
-
-    .column:hover .column-heading {
-        opacity: 0;
     }
 
     .column.active .column-heading {
@@ -283,8 +271,7 @@
         transition: opacity 0.4s ease;
     }
 
-    .column.active .content,
-    .column:hover .content {
+    .column.active .content {
         opacity: 1;
     }
 
@@ -320,7 +307,6 @@
         transition: all 0.8s ease 0.2s;
     }
 
-    .column:hover .column-title,
     .column.active .column-title {
         opacity: 1;
         transform: translateY(0);
@@ -405,6 +391,29 @@
         .column.slide-from-right .bg-video {
             animation: slideInFromRight 0.4s ease forwards;
         }
+
+        .column:hover {
+            flex: 1;
+        }
+
+        .column:hover .bg-video {
+            opacity: 1;
+        }
+
+        .column:hover .column-heading {
+            opacity: 0;
+        }
+
+        .column:hover .content {
+            opacity: 1;
+        }
+
+        .column:hover .column-title {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
 
         @keyframes slideInFromLeft {
             from {
@@ -654,14 +663,6 @@
             opacity: 1;
             transform: translateX(0);
         }
-
-        /* Hide hover zones on mobile */
-        .column .hover-left,
-        .column .hover-right {
-            display: none;
-        }
-
-
 
         .column .bg-video {
             opacity: 1 !important;
