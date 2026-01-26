@@ -63,7 +63,10 @@
         justify-content: space-between;
         align-items: center;
         padding: 20px 40px;
+        /* background: var(--navbar-bg); */
+        /* backdrop-filter: blur(10px); */
         z-index: 1000;
+        /* border-bottom: 1px solid rgba(255, 255, 255, 0.1); */
     }
 
     /* Default theme - show light, hide dark */
@@ -110,7 +113,10 @@
         padding: 10px 2rem;
         font-size: clamp(1rem, 1vw, 20px);
         font-family: 'Relationship de Melodrame', sans-serif;
+        /* background: var(--nav-link-bg); */
+        /* border-radius: 25px; */
         transition: all 0.3s ease;
+        /* backdrop-filter: blur(5px); */
     }
 
     .nav-link-active {
@@ -181,7 +187,7 @@
         width: 100%;
     }
 
-    /* Play button - only visible on desktop (min-width: 951px) */
+    /* Play button - only visible on mobile (max-width: 950px) */
     .play-container {
         position: fixed;
         top: 80px;
@@ -189,6 +195,7 @@
         width: 80px;
         height: 80px;
         display: none;
+        /* Hidden by default */
         align-items: center;
         justify-content: center;
         cursor: pointer;
@@ -203,7 +210,7 @@
         height: 100%;
         flex: 0 0 25%;
         overflow: hidden;
-        cursor: pointer;
+        /* cursor: pointer; */
         transition: flex 0.6s ease;
     }
 
@@ -221,43 +228,15 @@
         width: auto;
         height: auto;
         transform: translate(-50%, -50%);
+        opacity: 1;
+        z-index: 1;
         object-fit: cover;
-        z-index: 0;
-        opacity: 0;
         transition: opacity 0.6s ease;
     }
 
     .column.active .bg-video {
         opacity: 1;
     }
-
-    /* Background video via CSS */
-    .column::before {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        min-width: 100%;
-        min-height: 100%;
-        width: auto;
-        height: auto;
-        transform: translate(-50%, -50%);
-        object-fit: cover;
-        z-index: 0;
-        opacity: 0;
-        transition: opacity 0.6s ease;
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-image: var(--bg-image);
-        display: none;
-    }
-
-    .column.active::before {
-        opacity: 1;
-    }
-
-
 
     .column-heading {
         position: absolute;
@@ -301,6 +280,7 @@
         bottom: 5%;
         left: 5%;
         padding: 15px 15px;
+        /* transition: all 0.3s ease; */
         display: flex;
         flex-direction: column;
         row-gap: 5px;
@@ -310,6 +290,7 @@
         -webkit-backdrop-filter: blur(35px);
         border-radius: 15px;
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+
     }
 
     .text-bottom p {
@@ -413,6 +394,12 @@
 
         .column:hover {
             flex: 1;
+        }
+
+        .bg-video {
+            opacity: 0;
+            z-index: 0;
+
         }
 
         .column:hover .bg-video {
@@ -678,7 +665,7 @@
         }
 
         /* Remove hover effects on mobile */
-        .column:hover .bg-video {
+        .column:hover::before {
             opacity: 1;
             transform: translateX(0);
         }
@@ -709,25 +696,8 @@
 
         /* Remove active class styling conflicts */
         .column.active {
-            flex: 0 0 25% !important;
+            flex: 0 0 25%;
             /* Override desktop active state */
-        }
-
-        .column.active .bg-video {
-            opacity: 1 !important;
-        }
-
-        .column.active .column-heading {
-            opacity: 0 !important;
-        }
-
-        .column.active .content {
-            opacity: 1 !important;
-        }
-
-        .column.active .column-title {
-            opacity: 1 !important;
-            transform: translateY(0) !important;
         }
 
 
