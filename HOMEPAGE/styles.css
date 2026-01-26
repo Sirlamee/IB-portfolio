@@ -228,15 +228,43 @@
         width: auto;
         height: auto;
         transform: translate(-50%, -50%);
-        opacity: 1;
-        z-index: 1;
         object-fit: cover;
+        z-index: 0;
+        opacity: 0;
         transition: opacity 0.6s ease;
     }
 
     .column.active .bg-video {
         opacity: 1;
     }
+
+    /* Background video via CSS */
+    .column::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        transform: translate(-50%, -50%);
+        object-fit: cover;
+        z-index: 0;
+        opacity: 0;
+        transition: opacity 0.6s ease;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-image: var(--bg-image);
+        display: none;
+    }
+
+    .column.active::before {
+        opacity: 1;
+    }
+
+
 
     .column-heading {
         position: absolute;
@@ -394,12 +422,6 @@
 
         .column:hover {
             flex: 1;
-        }
-
-        .bg-video {
-            opacity: 0;
-            z-index: 0;
-
         }
 
         .column:hover .bg-video {
@@ -665,7 +687,7 @@
         }
 
         /* Remove hover effects on mobile */
-        .column:hover::before {
+        .column:hover .bg-video {
             opacity: 1;
             transform: translateX(0);
         }
@@ -696,8 +718,25 @@
 
         /* Remove active class styling conflicts */
         .column.active {
-            flex: 0 0 25%;
+            flex: 0 0 25% !important;
             /* Override desktop active state */
+        }
+
+        .column.active .bg-video {
+            opacity: 1 !important;
+        }
+
+        .column.active .column-heading {
+            opacity: 0 !important;
+        }
+
+        .column.active .content {
+            opacity: 1 !important;
+        }
+
+        .column.active .column-title {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
         }
 
 
