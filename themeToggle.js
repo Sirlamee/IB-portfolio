@@ -18,11 +18,11 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     const themeToggle = document.getElementById('theme-toggle');
-    const body = document.body;
+    const html = document.documentElement;
     
     // Check for saved theme preference or default to 'dark'
     const currentTheme = localStorage.getItem('theme') || 'dark';
-    body.setAttribute('data-theme', currentTheme);
+    html.setAttribute('data-theme', currentTheme);
     
     // Set initial switch state
     themeToggle.checked = currentTheme === 'light';
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
     themeToggle.addEventListener('change', function() {
         const newTheme = this.checked ? 'light' : 'dark';
         
-        body.setAttribute('data-theme', newTheme);
+        html.setAttribute('data-theme', newTheme);
         localStorage.setItem('theme', newTheme);
     });
 });
