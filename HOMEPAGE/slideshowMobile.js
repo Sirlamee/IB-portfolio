@@ -36,6 +36,30 @@ document.addEventListener('DOMContentLoaded', function() {
         
         const translateX = -currentSlide * 25; // Each slide is 25% of the container
         columnsContainer.style.transform = `translateX(${translateX}%)`;
+        
+        // Ensure videos are playing on mobile
+        playVideosForCurrentSlide();
+    }
+    
+    // Play videos for the current visible slide
+    function playVideosForCurrentSlide() {
+        const columns = document.querySelectorAll('.column');
+        columns.forEach((column, index) => {
+            const video = column.querySelector('.bg-video');
+            if (video) {
+                if (index === currentSlide) {
+                    // Play the current slide's video
+                    if (video.paused) {
+                        video.play().catch(err => console.log('Video play failed:', err));
+                    }
+                } else {
+                    // Pause other videos
+                    if (!video.paused) {
+                        video.pause();
+                    }
+                }
+            }
+        });
     }
     
     // Update indicator states
@@ -143,9 +167,13 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize slideshow state
     updateSlideshowState();
     
+    // Ensure videos play on initial load
+    playVideosForCurrentSlide();
+    
     // Update on window resize
     window.addEventListener('resize', function() {
         updateSlideshowState();
+        playVideosForCurrentSlide();
     });
     
 });

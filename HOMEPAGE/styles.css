@@ -63,10 +63,7 @@
         justify-content: space-between;
         align-items: center;
         padding: 20px 40px;
-        /* background: var(--navbar-bg); */
-        /* backdrop-filter: blur(10px); */
         z-index: 1000;
-        /* border-bottom: 1px solid rgba(255, 255, 255, 0.1); */
     }
 
     /* Default theme - show light, hide dark */
@@ -113,10 +110,7 @@
         padding: 10px 2rem;
         font-size: clamp(1rem, 1vw, 20px);
         font-family: 'Relationship de Melodrame', sans-serif;
-        /* background: var(--nav-link-bg); */
-        /* border-radius: 25px; */
         transition: all 0.3s ease;
-        /* backdrop-filter: blur(5px); */
     }
 
     .nav-link-active {
@@ -195,7 +189,6 @@
         width: 80px;
         height: 80px;
         display: none;
-        /* Hidden by default */
         align-items: center;
         justify-content: center;
         cursor: pointer;
@@ -308,7 +301,6 @@
         bottom: 5%;
         left: 5%;
         padding: 15px 15px;
-        /* transition: all 0.3s ease; */
         display: flex;
         flex-direction: column;
         row-gap: 5px;
@@ -318,7 +310,6 @@
         -webkit-backdrop-filter: blur(35px);
         border-radius: 15px;
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-
     }
 
     .text-bottom p {
